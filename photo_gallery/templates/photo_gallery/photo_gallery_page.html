@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-blogpage{% endblock %}
+
+
+{% block content %}
+	<h1>{{ page.title }}</h1>
+	<p class="meta">{{ page.description }}</p>
+
+	{% for item in page.gallery_images.all %}
+		{% image item.image max-1000x1000 as tmp_photo %}
+		<div style="float: left; margin: 10px;">
+			<a href="{{ tmp_photo.url }}">{% image item.image fill-320x240 %}</a>
+			<p>{{ item.caption }}</p>
+		</div>
+	{% endfor %}
+
+	<a href="{{ page.get_parent.url }}">Return to Photo Galleries</a>
+
+{% endblock %}

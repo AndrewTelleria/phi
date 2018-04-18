@@ -1,0 +1,46 @@
+body {
+	margin: 0;
+}
+
+.nav-bar ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 15px;
+	overflow: hidden;
+	background-color: #ddd;
+	display: flex;
+	width: 100%;
+}
+
+header {
+	background-color: black;
+}
+
+.logo {
+	background-image: url("../img/The_Pup_House_Inn_logo.png");
+	height: 300px;
+	max-width: 300px;
+}
+
+/*.nav-bar ul li {
+	flex: 1 1 100%;
+}*/
+
+.nav-bar ul li a {
+	color: green;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+.nav-bar ul li a:hover {
+	background-color: #fff;
+}
+
+.container {
+	display: flex;
+}
+
+.main-home {
+
+}
