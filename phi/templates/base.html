@@ -23,6 +23,8 @@
 
         {# Global stylesheets #}
         <link rel="stylesheet" type="text/css" href="{% static 'phi/css/phi.css' %}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        
 
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
@@ -58,6 +60,9 @@
 
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'phi/js/phi.js' %}"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
