@@ -5,21 +5,53 @@
 {% block body_class %}template-blogindexpage{% endblock %}
 
 {% block content %}
+
+<div class="blog-header">
 	<h1>{{ page.title }}</h1>
+</div>
 
-	<div class="intro">{{ page.intro|richtext }}</div>
+<div class="row">
 
-	{% for post in blogpages %}
-		{% with post=post.specific %}
-			<h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
+  <div class="leftcolumn">
+    <div class="container">
+      {% for post in resources %}
+        <div class="card blog-card">
+          <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
+          {% with post.main_image as main_image %}
+            {% if main_image %}{% image main_image width-250 %}{% endif %}
+          {% endwith %}
+          <p>{{ post.intro }}</p>
+        </div>
+      {% endfor %}
+    </div>
 
-			{% with post.main_image as main_image %}
-	            {% if main_image %}{% image main_image fill-160x100 %}{% endif %}
-	        {% endwith %}
-
-			<p>{{ post.intro }}</p>
-			{{ post.body|richtext }}
-		{% endwith %}
-	{% endfor %}
+    <ul class="pagination">
+      {% if resources.has_previous %}
+        <li><a href="?page={{ resources.previous_page_number }}">Previous Page</a></li>
+      {% endif %}
+      {% for page_num in resources.paginator.page_range %}
+        <li {% if page_num == resources.number %}class="active"{% endif %}><a href="?page={{ page_num }}">{{ page_num }}</a></li>
+      {% endfor %}
+      {% if resources.has_next %}
+      <li><a href="?page={{ resources.next_page_number }}">Next Page</a></li>
+      {% endif %}
+    </ul>
+  </div>
+    
+  <div class="rightcolumn">
+    <h2>The Pup House Inn</h2>
+    <p>{{ page.intro|richtext }}</p>
+    <h3>Popular Post</h3>
+    {% for post in resources %}
+      <div class="card">
+        <h4><a href="{% pageurl post %}">{{ post.title }}</a></h4>
+      </div>
+      {% endfor %}
+  </div>
+</div>
 
 {% endblock %}
+
+
+
+

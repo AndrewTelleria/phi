@@ -12,6 +12,9 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 class HomePage(Page):
     body = RichTextField(blank=True)
 
+    class Meta:
+    	verbose_name = "homepage"
+
     content_panels = Page.content_panels + [
     	FieldPanel('body', classname="full"),
     	InlinePanel('gallery_images', label="Gallery images"),

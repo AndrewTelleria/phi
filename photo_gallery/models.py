@@ -12,6 +12,9 @@ from wagtail.search import index
 class PhotoGalleryIndexPage(Page):
 	intro = RichTextField(blank=True)
 
+	class Meta:
+		verbose_name = "photo gallery indexpage"
+
 	def get_context(self, request):
 		# Update context to include only published posts, ordered by reverse-chron
 		context = super().get_context(request)
@@ -34,6 +37,7 @@ class PhotoGalleryPage(Page):
 			return gallery_item.image
 		else:
 			return None
+
 
 	search_fields = Page.search_fields + [
 		index.SearchField('date'),
