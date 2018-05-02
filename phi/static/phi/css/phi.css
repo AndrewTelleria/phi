@@ -8,6 +8,8 @@ body {
     overflow-x: hidden;
 }
 
+/* Header */
+
 .header {
 	background-image: url("../img/pup_house_inn_header.jpg");
 	background-size: cover;
@@ -33,56 +35,108 @@ body {
     z-index: -1;
 }
 
-.content {
-	background-color: #f1f1f1;
-	padding: 9px 0 0 0;
-}
+/* Navigation */
 
 .nav-bar {
 	margin-top: 650px;
-}
-
-.nav-bar ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 15px;
-	overflow: hidden;
 	background-color: #CECECC;
-	display: flex;
-	align-items: center;
-	flex-wrap: wrap;
-	width: 97.4%;
-	height: 50px;
+	overflow: hidden;
 	box-shadow: 0 1px 5px 0px #888888;
+	height: 66px;
 }
 
-.nav-bar ul li a {
+.nav-bar a:not(:last-child) {
+	float: left;	
 	color: black;
 	text-align: center;
 	padding: 14px 16px;
 	text-decoration: none;
 	height: 20px;
+	margin-top: 10px;
 }
 
-.nav-bar ul li a:hover {
+.nav-bar a:hover:not(:last-child) {
 	border-bottom: 5px solid #304B6D;
 }
 
-.nav-bar ul li a:active {
+.nav-bar a:active:not(:last-child) {
 	border-bottom: 5px solid #304B6D;
+}
+
+.nav-bar .menu-icon {
+	margin: 12px 15px 0 0;
+	display: none;
+	cursor: pointer;
+}
+
+.bar1, .bar2, .bar3 {
+	width: 35px;
+	height: 5px;
+	background-color: #333;
+	margin: 6px 0;
+	transition: 0.4s;
+    border-radius: 10px;
+}
+
+.change .bar1 {
+	-webkit-transform: rotate(-45deg) translate(-9px, 6px);
+	transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.change .bar2 {
+	opacity: 0;
+}
+
+.change .bar3 {
+	-webkit-transform: rotate(45deg) translate(-8px, -8px);
+	transform: rotate(45deg) translate(-8px, -8px);
 }
 
 .sticky {
 	position: fixed;
 	top: -650px;
-	width: 100%;;
+	width: 100%;
 }
 
 .sticky + .content {
 	padding-top: 710px;
 }
 
-/*Blog Index Page*/
+.responsive {
+	display: none;
+	float: none;
+	text-align: left;
+}
+
+.responsive ul {
+	margin-top: 100px;
+}
+
+.responsive ul li {
+	list-style: none;
+	position: relative;
+}
+
+.disappear .responsive {
+	display: block;
+}
+
+@media screen and (max-width: 600px) {
+	.nav-bar a:not(:first-child) {display: none;}
+	.nav-bar a.menu-icon {
+	    float: right;
+	    display: block;
+	}
+}
+
+/* Main body content */
+
+.content {
+	background-color: #f1f1f1;
+	padding: 9px 0 0 0;
+}
+
+/* Blog Index Page */
 
 .blog-header {
 	font-size: 40px;

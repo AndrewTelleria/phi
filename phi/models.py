@@ -7,22 +7,21 @@ from wagtail.core.models import Page, Orderable
 from wagtail.core.fields import RichTextField
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel
 from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.snippets.models import register_snippet
 
-class PhiPage(Page):
 
-
-	content_panels = Page.content_panels + [
-    	InlinePanel('logo', label="Logo image"),
-    ]
-
-class PhiPageLogo(Orderable):
-	page = ParentalKey(PhiPage, on_delete=models.CASCADE, related_name='logo')
-	image = models.ForeignKey(
-			'wagtailimages.Image', on_delete=models.CASCADE, related_name='+'
-		)
-	caption = models.CharField(blank=True, max_length=250)
+@register_snippet
+class FooterText(models.Model):
+	body = RichTextField()
 
 	panels = [
-		ImageChooserPanel('image'),
-		FieldPanel('caption'),
+		FieldPanel('body'),
 	]
+
+	def __str__(self):
+		return "Footer text"
+
+	class Meta:
+		verbose_name_plural = "Footer Text"
+
+
