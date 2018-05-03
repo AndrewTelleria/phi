@@ -5,7 +5,22 @@
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
-	<h1>{{ page.title }}</h1>
+
+	{% with blocks=self.body %}
+
+		{% for block in page.body %}
+			{% if block.block_type == 'heading' %}
+				<h1>{{ block.value }}</h1>
+			{% else %}
+				<section class="block-{{ block.block_type }}">
+					{% include_block block %}
+				</section>
+			{% endif %}
+		{% endfor %}
+
+	{% endwith %}
+
+	<!-- <h1>{{ page.title }}</h1>
 	<div class="container">
 		<div class="main-home">
 		    {{ page.body|richtext }}
@@ -13,13 +28,5 @@
 		<div class="side-home">
 			
 		</div>
-	</div>
-	
-
-    {% for item in page.gallery_images.all %}
-    	<div style="float: left; margin: 10px;">
-    		{% image item.image fill-320x240 %}
-    		<p>{{ item.caption }}</p>    		
-    	</div>
-    {% endfor %}
+	</div> -->
 {% endblock %}

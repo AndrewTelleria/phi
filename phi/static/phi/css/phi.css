@@ -8,6 +8,25 @@ body {
     overflow-x: hidden;
 }
 
+.rich-text img {
+    max-width: 100%;
+    height: auto;
+}
+
+.responsive-object {
+    position: relative;
+}
+
+.responsive-object iframe,
+.responsive-object object,
+.responsive-object embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
 /* Header */
 
 .header {
@@ -143,6 +162,10 @@ body {
 	text-align: center;
 }
 
+/* End blog index page */
+
+/* Blog Page */
+
 .leftcolumn {
 	float: left;
 	width: 75%;
@@ -186,9 +209,6 @@ body {
 	padding-left: 20px;
 }
 
-/*.rightcolumn h1, h2, h3, p {
-	padding: 20px;
-}*/
 
 .card {
 	background-color: white;
@@ -240,6 +260,7 @@ body {
 
 }
 
+
 .blog-image {
 	height: 200px;
 	width: 75%;
@@ -247,17 +268,22 @@ body {
 	background-repeat: no-repeat;
 }
 
+.row .card .block-image img {
+	max-width: 100%;
+    height: auto;
+}
+
 .blog-page {
 	padding: 20px;
 	width: 75%;
 }
 
-/*End blog index page*/
+/* End blog page */
+
 
 .footer {
   padding: 20px;
   text-align: center;
   background: black;
-  margin-top: 20px;
   color: white;
 }

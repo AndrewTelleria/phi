@@ -9,19 +9,5 @@ from wagtail.admin.edit_handlers import FieldPanel, InlinePanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.models import register_snippet
 
-
-@register_snippet
-class FooterText(models.Model):
-	body = RichTextField()
-
-	panels = [
-		FieldPanel('body'),
-	]
-
-	def __str__(self):
-		return "Footer text"
-
-	class Meta:
-		verbose_name_plural = "Footer Text"
-
-
+class rootPage(Page):
+	pass
