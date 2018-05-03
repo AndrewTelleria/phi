@@ -76,6 +76,26 @@ class People(ClusterableModel):
 		verbose_name = 'Person'
 		verbose_name_plural = 'People'
 
+@register_snippet
+class FooterText(models.Model):
+	"""
+	This provides editable text for the site footer. Again it uses the decorator
+	'register_snippet' to allow it to be accessible via the admin. It is made
+	accessible on the template via a template tag defined in templates/home/templatetags/
+	navigation_tags.py
+	"""
+	body = RichTextField()
+
+	pangels = [
+		FieldPanel('body'),
+	]
+
+	def __str__(self):
+		return "Footer text"
+
+	class Meta:
+		verbose_name_plural = "Footer Text"
+
 
 
 
