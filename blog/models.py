@@ -11,11 +11,18 @@ from taggit.models import TaggedItemBase
 from wagtail.core.models import Page, Orderable
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core import blocks
-from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, StreamFieldPanel
+from wagtail.admin.edit_handlers import (
+    FieldPanel, 
+    InlinePanel, 
+    MultiFieldPanel, 
+    StreamFieldPanel,
+)
+
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtail.snippets.models import register_snippet
+from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
 
 class BlogIndexPage(Page):
@@ -62,6 +69,14 @@ class BlogPageTag(TaggedItemBase):
 
 
 class BlogPage(Page):
+    author = models.ForeignKey(
+        'home.People',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+    )
+
     date = models.DateField("Post date")
     intro = models.CharField(max_length=250)
     body = StreamField([
@@ -83,11 +98,13 @@ class BlogPage(Page):
             return None
 
     search_fields = Page.search_fields + [
+        index.SearchField('author'),
         index.SearchField('intro'),
         index.SearchField('body'),
     ]
 
     content_panels = Page.content_panels + [
+        SnippetChooserPanel('author'),
         MultiFieldPanel([
             FieldPanel('date'),
             FieldPanel('tags'),

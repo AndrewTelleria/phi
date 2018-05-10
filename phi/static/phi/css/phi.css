@@ -8,6 +8,58 @@ body {
     overflow-x: hidden;
 }
 
+/* HomePage */
+
+.hero {
+	background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: fixed;
+    height: 700px;
+    width: 100%;
+    top: 0;
+    z-index: -100;
+    opacity: 0.5;
+    padding: 0;
+}
+
+.logo {
+	margin-top: -862px;
+	background-image: url("../img/the_pup_house_inn_logo_transparent.png");
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 850px;
+	width: 100%;
+    position: fixed;
+    z-index: -1;
+}
+
+.container {
+	border-style: solid;
+	border-width: 1px;
+	padding: 10px;
+
+}
+
+.container-hero {
+	border-style: solid;
+	border-width: 1px;
+	margin-top: -330px;
+    text-align: center;
+    position: fixed;
+    z-index: -1;
+    width: 100%;
+    margin: -330px 10px 10px 10px;
+}
+
+.homepage-content {
+	/*padding: 20px;*/
+}
+
+
+/* Responsive wagtail images */
+
 .rich-text img {
     max-width: 100%;
     height: auto;
@@ -40,18 +92,6 @@ body {
 	top: 0;
 	z-index: -100;
 	opacity: 0.5;
-}
-
-.logo {
-	margin-top: -700px;
-	background-image: url("../img/the_pup_house_inn_logo_transparent.png");
-	background-size: contain;
-	background-position: center;
-	background-repeat: no-repeat;
-	height: 850px;
-	width: 100%;
-    position: fixed;
-    z-index: -1;
 }
 
 /* Navigation */

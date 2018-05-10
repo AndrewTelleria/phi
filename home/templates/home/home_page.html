@@ -1,32 +1,127 @@
 {% extends "base.html" %}
-
 {% load wagtailcore_tags wagtailimages_tags %}
-
-{% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
 
-	{% with blocks=self.body %}
+{% image page.image width-1920 as image %}
 
-		{% for block in page.body %}
-			{% if block.block_type == 'heading' %}
-				<h1>{{ block.value }}</h1>
+
+
+<div class="container-fluid hero" style="background-image: url('{{ image.url }}')">
+</div>
+<div class="homepage-content">
+	<h1>Page Title: {{ page.title }}</h1>
+	<div class="container-hero">
+		<div class="row">			
+			<p>Hero Text: {{ page.hero_text }}</p>
+			{% if page.hero_cta_link %}
+				<a href="{% pageurl page.hero_cta_link %}" class="hero-cta-link">
+					<p>Hero CTA: {{ page.hero_cta }}</p>
+				</a>				
 			{% else %}
-				<section class="block-{{ block.block_type }}">
-					{% include_block block %}
-				</section>
+				<p>Hero CTA: {{ page.hero_cta }}</p>
 			{% endif %}
-		{% endfor %}
+		</div>
+	</div>
 
-	{% endwith %}
-
-	<!-- <h1>{{ page.title }}</h1>
 	<div class="container">
-		<div class="main-home">
-		    {{ page.body|richtext }}
+		<div class="row promo-row">
+			<div class="promo">
+				{% if page.promo_image or page.promo_title or page.promo_text %}
+				<figure>{% image page.promo_image fill-200x200-c100 %}</figure>
+				<div class="promo-text">
+					<h3>Promo Title: {{ page.promo_title }}</h3>
+					Promo Text: {{ page.promo_text|safe }}
+				</div>
+				{% endif %}
+			</div>
 		</div>
-		<div class="side-home">
-			
+
+		<div class="feature-1">
+			{% if page.featured_section_1 %}
+				<h2>{{ page.featured_section_1_title }}</h2>				
+				<div class="feature-children">
+					<h2>Feature order</h2>
+					{% for childpage in features_list %}
+						<li>
+							<div class="row">
+								<div class="childpage">
+									<a href="{{ childpage.url }}">
+										<figure>
+											{% image childpage.image fill-180x140-c100 %}
+										</figure>
+									</a>
+									<div class="childpage-title">
+										<h3><a href="{{ childpage.url }}">{{ childpage.title }}</a></h3>
+									</div>
+								</div>
+							</div>
+						</li>
+					{% endfor %}
+				</div>
+			{% endif %}
 		</div>
-	</div> -->
+	</div>
+
+	{% if page.body %}
+		<div class="container">
+			<div class="row">
+				<div class="streamfield-column">
+					{{ page.body }}
+				</div>
+			</div>
+		</div>
+	{% endif %}
+
+
+<div class="container">
+	<div class="row">
+		<div class="feature-2">
+			{% if page.featured_section_2 %}
+			<h2>{{ page.featured_section_2_title }}</h2>
+				<div class="feature-children row feature-2-row">
+					{% for childpage in page.featured_section_2.get_children.specific|slice:"3" %}
+						<li class="feature-2-item">
+							<a href="{{ childpage.url }}">
+								<figure>
+									{% image childpage.image fill-430x210-c10 %}
+								</figure>
+							</a>
+							<div class="feature-2-text">
+								<h3><a href="{{ childpage.url }}">{{ childpage.title }}</a></h3>
+								<p>{{ childpage.introduction|truncatewords:15 }}</p>
+							</div>
+						</li>
+					{% endfor %}
+				</div>
+			{% endif %}
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="feature-3">
+			{% if page.featured_section_3 %}
+			<h2>{{ page.featured_section_3_title }}</h2>
+				<div class="feature-children row">
+					{% for childpage in page.featured_section_3.get_children.specific|slice:"6" %}
+						<li class="feature-3-item">
+							<a href="{{ childpage.url }}">
+								<figure>
+									{% image childpage.image fill-430x254-c100 %}
+								</figure>
+								<h3>{{ childpage.title }}</h3>
+							</a>
+						</li>
+					{% endfor %}
+				</div>	
+			{% endif %}
+		</div>
+	</div>
+</div>
+
+</div>
+
+
 {% endblock %}
