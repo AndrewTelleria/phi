@@ -10,8 +10,9 @@
 	<h1>{{ page.title }}</h1>
 	<div class="intro">{{ page.intro|richtext }}</div>
 
+<div class="row">
 	{% for post in photo_gallery_pages %}
-
+	<div class="card">
 		{% with post=post.specific %}
 
 			<h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
@@ -21,7 +22,8 @@
 	        {% endwith %}
 
 	    {% endwith %}
-
+	</div>
 	{% endfor %}
+</div>
 
 {% endblock %}

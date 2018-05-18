@@ -1,11 +1,23 @@
-body {
+html, body {
 	font-family: Arial;
 	margin: 0;
-	z-index: 10;
 	padding: 0;
 	width: 100%;
     height: 100%;
-    overflow-x: hidden;
+    /*overflow-x: hidden;*/
+}
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+/* Navbar on page other than home */
+
+.nav-bar1 {
+	margin-top: -69px !important;
+    position: fixed;
+    width: 100%;
 }
 
 /* HomePage */
@@ -24,7 +36,7 @@ body {
 }
 
 .logo {
-	margin-top: -862px;
+	margin-top: -855px;
 	background-image: url("../img/the_pup_house_inn_logo_transparent.png");
 	background-size: contain;
 	background-position: center;
@@ -32,25 +44,49 @@ body {
 	height: 850px;
 	width: 100%;
     position: fixed;
-    z-index: -1;
+    z-index: -3;
 }
 
 .container {
-	border-style: solid;
-	border-width: 1px;
-	padding: 10px;
-
+	/*border-style: solid;
+	border-width: 1px;*/
 }
 
 .container-hero {
-	border-style: solid;
-	border-width: 1px;
 	margin-top: -330px;
     text-align: center;
     position: fixed;
     z-index: -1;
     width: 100%;
-    margin: -330px 10px 10px 10px;
+    margin: -290px 10px 10px 10px;
+}
+
+.container-hero .hero-row {
+	flex-direction: column;
+}
+
+.container-hero p {
+	font-size: 30px;
+	width: 50%;
+	margin: auto;
+}
+
+.container-hero .hero-cta-link p {
+	border: 1px solid #304B6D;
+	border-radius: 4px;
+	box-shadow: 0 0 1px transparent;
+	padding: 10px;
+	margin-top: 15px;
+	display: inline-block;
+	position: relative;
+	transform: perspective(1px) translateZ(0);
+	position: relative;
+	transition-duration: 0.1s;
+	background-color: #CECECC;
+    color: #304B6D;
+    text-decoration: none;
+    font-size: 20px;
+    width: 25%;
 }
 
 .homepage-content {
@@ -115,11 +151,13 @@ body {
 }
 
 .nav-bar a:hover:not(:last-child) {
-	border-bottom: 5px solid #304B6D;
+	border-top: 1px solid #304B6D;
+	color: #304B6D;
 }
 
 .nav-bar a:active:not(:last-child) {
-	border-bottom: 5px solid #304B6D;
+	border-top: 1px solid #304B6D;
+	color: #304B6D;
 }
 
 .nav-bar .menu-icon {
@@ -193,8 +231,220 @@ body {
 .content {
 	background-color: #f1f1f1;
 	padding: 9px 0 0 0;
+    min-height: 100%;
 }
 
+.content1 {
+	margin-top: 69px;
+}
+
+
+
+/* Promo section on homepage */
+
+.container .promo-row {
+    background: linear-gradient(#cececc 0%,#304b6d 100%);
+    height: 100%;
+    margin: -10px 10px 20px -11px;
+    text-align: center;
+    width: 35%;
+    padding: 40px 60px;
+    border-radius: 0 0 10px;
+}
+
+.container .promo-row .promo img {
+	width: 100%;
+    height: auto;
+    border-radius: 200px;
+}
+
+/* Feature 1 on homepage */
+
+.container .feature-1 {
+	list-style: none;
+	width: 50%;
+}
+
+.container .feature-1 li {
+	margin: 0 10px 20px 0;
+}
+
+.container .feature-1 li a {
+	text-decoration: none;
+	color: #cececc;
+}
+
+.container .feature-1 li .childpage-title a:hover {
+	background-color: #C7C7C5;
+	color: #304B6D;
+	border-radius: 3px;
+	padding: 10px;
+}
+
+
+.container .feature-1 .feature-children .childpage {
+	display: flex;
+	align-items: center;
+	background-color: #304b6d;
+	border-radius: 0 5px 5px 0;
+    width: 100%;
+    padding-right: 30px;
+    margin: 10px 0 10px 10px;
+}
+
+.container .feature-1 .feature-children .childpage figure {
+	margin: 0 15px -4px 0;
+}
+
+@media screen and (max-width: 810px) {
+	.container .feature-1 {
+		width: 95%;
+	}
+
+	.container .promo-row {
+		width: 100%;
+		margin: -10px 10px 20px 10px;
+		border-radius: 0 0 10px 10px;
+	}
+}
+
+
+/* Body block on homepage */ 
+
+.container .streamfield-column {
+	background: linear-gradient(rgba(170,170,170,1) 0%,rgba(238,238,238,1) 44%);
+	padding: 10px;
+}
+
+.container .streamfield-column .rich-text {
+	width: 50%;
+	margin: auto;
+}
+
+@media screen and (max-width: 810px) {
+	.container .streamfield-column .rich-text {
+		width: 70%;
+	}	    
+}
+
+.container .streamfield-column .block-image_block figure img {
+	width: 100%;
+	height: auto;
+}
+
+.container .streamfield-column .block-block_quote {
+	width: 100%;
+    background: black;
+    color: white;
+    padding: 10px;
+    margin: 0 0 -10px -10px;
+}
+
+.container .streamfield-column .block-block_quote blockquote {
+	font-size: 30px;
+    text-align: center;
+}
+
+.container .streamfield-column .block-block_quote footer {
+	font-size: 25px;
+    text-align: center;
+}
+
+/* Feature 2 on homepage */
+
+.feature-2 h2 {
+	font-size: 45px;
+    text-align: center;
+}
+	
+.feature-2 .feature-children .feature-2-row {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.feature-2 .feature-children .feature-2-item {
+	list-style: none;
+    padding: 15px;
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 28%;
+    background: #cececc;
+    border-radius: 0 0 5px 5px;
+}
+
+@media screen and (max-width: 955px) {
+	.feature-2 .feature-children .feature-2-item {
+		width: 36%;
+	}
+}
+
+.feature-2 .feature-children .feature-2-item figure {
+	margin: -15px;
+}
+
+.feature-2 .feature-children .feature-2-item img {
+	width: 100%;
+    height: auto;
+}
+
+.feature-2 .feature-children .feature-2-item a {
+	color: #304b6d;
+	text-decoration: none;
+	width: 100%;
+    height: auto;
+}
+
+
+.feature-2 .feature-children .feature-2-item h3 {
+	font-size: 25px;
+}
+
+
+/* Feature 3 on homepage */
+
+.feature-3 h2 {
+	font-size: 45px;
+    text-align: center;
+}
+
+.feature-3 .feature-children .feature-3-item {
+	list-style: none;
+    margin: 10px;
+    background: #cececc;
+    border-radius: 5px;
+    width: 45%;
+}
+
+@media screen and (max-width: 955px) {
+	.feature-3 .feature-children .feature-3-item {
+		width: 100%;
+	}
+}
+
+.feature-3 .feature-children .feature-3-item a {
+	text-decoration: none;
+	color: #304b6d;
+}
+
+.feature-3 .feature-children .feature-3-item a:hover h3 {
+	background-color: #304B6D;
+	color: #C7C7C5;
+	border-radius: 3px;
+}
+
+
+.feature-3 .feature-children .feature-3-item h3 {
+    text-align: center;
+    font-size: 30px;
+    margin: 0;
+    padding-top: 10px;
+}
+
+.feature-3 .feature-children .feature-3-item img {
+	width: 100%;
+    height: auto;
+}
 /* Blog Index Page */
 
 .blog-header {
@@ -326,4 +576,6 @@ body {
   text-align: center;
   background: black;
   color: white;
+  /*position: absolute;*/
+  bottom: -78px;
 }

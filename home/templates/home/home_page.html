@@ -10,13 +10,12 @@
 <div class="container-fluid hero" style="background-image: url('{{ image.url }}')">
 </div>
 <div class="homepage-content">
-	<h1>Page Title: {{ page.title }}</h1>
 	<div class="container-hero">
-		<div class="row">			
-			<p>Hero Text: {{ page.hero_text }}</p>
+		<div class="row hero-row">			
+			<p>{{ page.hero_text }}</p>
 			{% if page.hero_cta_link %}
 				<a href="{% pageurl page.hero_cta_link %}" class="hero-cta-link">
-					<p>Hero CTA: {{ page.hero_cta }}</p>
+					<p>{{ page.hero_cta }}</p>
 				</a>				
 			{% else %}
 				<p>Hero CTA: {{ page.hero_cta }}</p>
@@ -41,8 +40,7 @@
 			{% if page.featured_section_1 %}
 				<h2>{{ page.featured_section_1_title }}</h2>				
 				<div class="feature-children">
-					<h2>Feature order</h2>
-					{% for childpage in features_list %}
+					{% for childpage in sp_features_list %}
 						<li>
 							<div class="row">
 								<div class="childpage">
@@ -80,16 +78,16 @@
 			{% if page.featured_section_2 %}
 			<h2>{{ page.featured_section_2_title }}</h2>
 				<div class="feature-children row feature-2-row">
-					{% for childpage in page.featured_section_2.get_children.specific|slice:"3" %}
+					{% for childpage in bp_features_list %}
 						<li class="feature-2-item">
 							<a href="{{ childpage.url }}">
 								<figure>
-									{% image childpage.image fill-430x210-c10 %}
+									{% image childpage.main_image fill-430x210-c10 %}
 								</figure>
 							</a>
 							<div class="feature-2-text">
 								<h3><a href="{{ childpage.url }}">{{ childpage.title }}</a></h3>
-								<p>{{ childpage.introduction|truncatewords:15 }}</p>
+								<p>{{ childpage.intro|truncatewords:15 }}</p>
 							</div>
 						</li>
 					{% endfor %}
@@ -98,20 +96,19 @@
 		</div>
 	</div>
 </div>
-
 <div class="container">
 	<div class="row">
 		<div class="feature-3">
 			{% if page.featured_section_3 %}
 			<h2>{{ page.featured_section_3_title }}</h2>
 				<div class="feature-children row">
-					{% for childpage in page.featured_section_3.get_children.specific|slice:"6" %}
+					{% for childpage in pgp_features_list %}
 						<li class="feature-3-item">
 							<a href="{{ childpage.url }}">
-								<figure>
-									{% image childpage.image fill-430x254-c100 %}
-								</figure>
 								<h3>{{ childpage.title }}</h3>
+								<figure>
+									{% image childpage.main_image fill-430x254-c100 %}
+								</figure>								
 							</a>
 						</li>
 					{% endfor %}

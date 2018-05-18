@@ -23,6 +23,8 @@ from wagtail.snippets.models import register_snippet
 from .blocks import BaseStreamBlock
 
 from services.models import ServicePage
+from blog.models import BlogPage, BlogPageGalleryImage
+from photo_gallery.models import PhotoGalleryPage, PhotoGalleryImage
 
 
 @register_snippet
@@ -77,26 +79,6 @@ class People(ClusterableModel):
 	class Meta:
 		verbose_name = 'Person'
 		verbose_name_plural = 'People'
-
-@register_snippet
-class FooterText(models.Model):
-	"""
-	This provides editable text for the site footer. Again it uses the decorator
-	'register_snippet' to allow it to be accessible via the admin. It is made
-	accessible on the template via a template tag defined in templates/home/templatetags/
-	navigation_tags.py
-	"""
-	body = RichTextField()
-
-	pangels = [
-		FieldPanel('body'),
-	]
-
-	def __str__(self):
-		return "Footer text"
-
-	class Meta:
-		verbose_name_plural = "Footer Text"
 
 
 class StandardPage(Page):
@@ -281,13 +263,29 @@ class HomePage(Page):
     def get_context(self, request):
     	context = super(HomePage, self).get_context(request)
     	sp_list = [1, 2, 3, 4]
-    	objs = ServicePage.objects.all()
-    	for sp in objs:
+    	bp_list = [1, 2, 3, 4, 5, 6]
+    	pgp_list = [1, 2]
+    	sp_objs = ServicePage.objects.all()
+    	bp_objs = BlogPage.objects.all()
+    	pgp_objs = PhotoGalleryPage.objects.all()
+    	for sp in sp_objs:
     		for value in sp_list:
     			if value == sp.feature and sp not in sp_list:
     				sp_list.insert(value-1, sp)
     				sp_list.remove(value)
-    	context['features_list'] = sp_list
+    	for bp in bp_objs:
+    		for value in bp_list:
+    			if value == bp.feature and bp not in bp_list:
+    				bp_list.insert(value-1, bp)
+    				bp_list.remove(value)
+    	for pgp in pgp_objs:
+    		for value in pgp_list:
+    			if value == pgp.feature and pgp not in pgp_list:
+    				pgp_list.insert(value-1, pgp)
+    				pgp_list.remove(value)
+    	context['sp_features_list'] = sp_list
+    	context['bp_features_list'] = bp_list
+    	context['pgp_features_list'] = pgp_list
     	return context
 
     def __str__(self):

@@ -5,30 +5,10 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>
-            {% block title %}
-                The Pup House Inn |
-            {% endblock %}
-            {% if self.seo_title %}
-                {{ self.seo_title }}
-            {% else %}
-                {{ self.title }}
-            {% endif %}
-        </title>
-        <meta name="description" content="" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-        {# Global stylesheets #}
-        <link rel="stylesheet" type="text/css" href="{% static 'phi/css/phi.css' %}">
-        
-
-        {% block extra_css %}
-            {# Override this in templates to add extra stylesheets #}
-        {% endblock %}
-    </head>
+    
+    {% block head %}
+        {% include "includes/head.html" %}
+    {% endblock head %}
 
     <body class="{% block body_class %}{% endblock %}">
         {% load wagtailcore_tags wagtailimages_tags %}
@@ -39,45 +19,17 @@
             <div class="logo"></div>
         {% endif %}
             
-        <div class="nav-bar" id="myNavbar">
-            <a href="/">Home</a>
-            <a href="{% slugurl 'blog' %}">Blog</a>
-            <a href="{% slugurl 'photo-gallery' %}">Photo Gallery</a>
-            <a href="{% slugurl 'about' %}">About</a>                
-            <a href="{% slugurl 'contact' %}">Contact</a>
-            <a href="{% slugurl 'services' %}">Services</a>
-            <a href="#">Book</a>
-            <a href="javascript:void(0);" class="menu-icon">
-                    <div onclick="menuIcon(this)">
-                        <div class="bar1"></div>
-                        <div class="bar2"></div>
-                        <div class="bar3"></div>
-                    </div>
-                </a>
-            <div id="responsive-menu" onclick="responsiveMenu(this)">          
-                
-                <div class="responsive">
-                    <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="{% slugurl 'blog' %}">Blog</a></li>
-                        <li><a href="{% slugurl 'photo-gallery' %}">Photo Gallery</a></li>
-                        <li><a href="{% slugurl 'about' %}">About</a></li>       
-                        <li><a href="{% slugurl 'contact' %}">Contact</a></li>
-                        <li><a href="{% slugurl 'services' %}">Services</a></li>
-                        <li><a href="#">Book</a>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        {% block navbar %}
+            {% include "includes/navbar.html" with parent=site_root calling_page=self %}
+        {% endblock navbar %}
         
-
-
-        <div class="content" role="main">
+        <div class="content" id="pageContent" role="main">
             {% block content %}{% endblock %}
         </div>
 
         <div class="footer">
             <h2>Footer</h2>
+            {% include "includes/footer.html" %} 
         </div>
 
         {# Global javascript #}

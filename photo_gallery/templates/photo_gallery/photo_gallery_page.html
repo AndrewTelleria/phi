@@ -11,21 +11,21 @@
 
 	{% for item in page.gallery_images.all %}
 		{% image item.image max-1000x500 as tmp_photo %}
-
 		<img class="mySlides" src="{{ tmp_photo.url }}">
 	{% endfor %}
 
 	<button class="slider-button left-arrow" onclick="plusDivs(-1)">Left</button>
 	<button class="slider-button right-arrow" onclick="plusDivs(+1)">Right</button>
 
-
+<div class="row">
 	{% for item in page.gallery_images.all %}
 		{% image item.image max-1000x1000 as tmp_photo %}
-		<div style="float: left; margin: 10px;">
+		<div class="card">
 			<a href="{{ tmp_photo.url }}">{% image item.image fill-320x240 %}</a>
 			<p>{{ item.caption }}</p>
 		</div>
 	{% endfor %}
+</div>
 
 	<a href="{{ page.get_parent.url }}">Return to Photo Galleries</a>
 

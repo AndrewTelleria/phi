@@ -5,6 +5,7 @@ from wagtail.core.fields import StreamField
 from wagtail.core import blocks
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.images.blocks import ImageChooserBlock
+from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 
 from home.blocks import BaseStreamBlock
@@ -48,25 +49,19 @@ class ServicePage(Page):
 		choices=FEATURE_CHOICES,
 		default=0,
 	)
+	image = models.ForeignKey(
+		'wagtailimages.Image',
+		null=True,
+		blank=True,
+		on_delete=models.SET_NULL,
+		related_name='+',
+		help_text='Landscape mode only; horizontal width between 1000px and 3000px.'
+	)
 	service = models.CharField(max_length=255)
 	price = models.FloatField(default=True)
 	body = StreamField(
 		BaseStreamBlock(), verbose_name="Page body", blank=True
 	)
-
-	def feature_order(self, request):
-		sp_list = [1, 2, 3, 4]
-		objs = self.objects.all()
-		for sp in objs:
-			for value in sp_list:
-				if value == sp.feature and sp not in sp_list:
-					sp_list.insert(value-1, sp)
-					sp_list.remove(value)
-		context = {
-			'features_list': sp_list,
-		}
-		return render(request, 'home/home_page.html', context)
-
 
 	def animal_type(self):
 		return self.animal
@@ -81,6 +76,7 @@ class ServicePage(Page):
 		FieldPanel('feature'),
 		FieldPanel('service'),
 		FieldPanel('price'),
+		ImageChooserPanel('image'),
 		StreamFieldPanel('body'),
     ]
 

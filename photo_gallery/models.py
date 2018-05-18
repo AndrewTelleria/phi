@@ -28,6 +28,20 @@ class PhotoGalleryIndexPage(Page):
 
 
 class PhotoGalleryPage(Page):
+	FEATURE_1 = 1
+	FEATURE_2 = 2
+	FEATURE_3 = 3
+	NO_FEATURE = 0
+	FEATURE_CHOICES = (
+		(FEATURE_1, 'Feature 1'),
+		(FEATURE_2, 'Feature 2'),
+		(FEATURE_3, 'Feature 3'),
+		(NO_FEATURE, 'No feature')
+	)
+	feature = models.IntegerField(
+		choices=FEATURE_CHOICES,
+		default=0,
+	)
 	date = models.DateField("Post date")
 	description = models.CharField(max_length=1000)
 
@@ -45,6 +59,7 @@ class PhotoGalleryPage(Page):
 	]
 
 	content_panels = Page.content_panels + [
+		FieldPanel('feature'),
 		FieldPanel('date'),
 		FieldPanel('description'),
 		InlinePanel('gallery_images', label="Gallery images"),
