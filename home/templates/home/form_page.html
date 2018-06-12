@@ -2,56 +2,68 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
+<div class="row">
+	<div class="leftcolumn">
+		<div class="card">
+			<div class="row">
+				<div class="contact-form">
+					{% if page.intro %}
+						<p class="intro">{{ page.intro|richtext }}</p>
+					{% endif %}
+					{% if page.body %}
+						{{ page.body }}
+					{% endif %}
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-page">
+					{% comment %}
+			        You could render your form using a Django rendering shortcut such as `{{ form.as_p }}` but that will tend towards unsemantic code, and make it difficult to style. You can read more on Django form at:
+			        https://docs.djangoproject.com/en/1.10/topics/forms/#form-rendering-options
+			        {% endcomment %}
 
-<div class="container">
-	<div class="row">
-		<div class="contant-form">
-			{% if page.intro %}
-				<p class="intro">{{ page.intro|richtext }}</p>
-			{% endif %}
-			{% if page.body %}
-				{{ page.body }}
-			{% endif %}
+			        <form action="{% pageurl page %}" method="POST" role="form">
+			        	{% csrf_token %}
+			        	{% if form.subject.errors %}
+			        		<ol class="alert-dialog">
+			        			{% for error in form.subject.errors %}
+			        				<li role="alert"><strong>{{ error|escape }}</strong></li>
+			        			{% endfor %}
+			        		</ol>
+			        	{% endif %}
+
+
+			        	{% for field in form %}
+			        		<div class="fieldWrapper" aria-required={% if field.field.required %}"true"{% else %}"false"{% endif %}>
+
+			        			{{ field.label_tag }}{% if field.field.required %}<span class="required">*</span>{% endif %}
+
+			        			{{ field }}
+
+			        			{% if field.help_text %}
+			        				<p class="help">{{ field.help_text|safe }}</p>
+			        			{% endif %}
+			        		</div>
+			        	{% endfor %}
+			        	<p>* = required</p>
+
+			        	<input class="submit-button" type="submit">
+			        </form>
+			    </div>
+			</div>
 		</div>
 	</div>
-</div>
-
-<div class="container">
-	<div class="row">
-		<div class="form-page">
-			{% comment %}
-	        You could render your form using a Django rendering shortcut such as `{{ form.as_p }}` but that will tend towards unsemantic code, and make it difficult to style. You can read more on Django form at:
-	        https://docs.djangoproject.com/en/1.10/topics/forms/#form-rendering-options
-	        {% endcomment %}
-
-	        <form action="{% pageurl page %}" method="POST" role="form">
-	        	{% csrf_token %}
-	        	{% if form.subject.errors %}
-	        		<ol class="alertdialog">
-	        			{% for error in form.subject.errors %}
-	        				<li role="alert"><strong>{{ error|escape }}</strong></li>
-	        			{% endfor %}
-	        		</ol>
-	        	{% endif %}
-
-
-	        	{% for field in form %}
-	        		<div class="fieldWrapper" aria-required={% if field.field.required %}"true"{% else %}"false"{% endif %}>
-
-	        			{{ field.label_tag }}{% if field.field.required %}<span class="required">*</span>{% endif %}
-
-	        			{{ field }}
-
-	        			{% if field.help_text %}
-	        				<p class="help">{{ field.help_text|safe }}</p>
-	        			{% endif %}
-	        		</div>
-	        	{% endfor %}
-
-	        	<input type="submit">
-	        </form>
-	    </div>
-	</div>
+	<!-- <div class="rightcolumn">
+		<div class="card">
+			<h2>Right column</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		</div>
+	</div> -->
 </div>
 
 {% endblock content %}

@@ -26,8 +26,8 @@
 	<div class="rightcolumn">
 		<div class="card">
 			{% with page.main_image as main_image %}
-	            {% if main_image %}{% image main_image width-400 as photo %}
-		            <div class="blog-image" style="background-image: url({{ photo.url }})"></div>
+	            {% if main_image %}{% image main_image fill-500x500 as photo %}
+		            <div class="right-blog-image" style="background-image: url({{ photo.url }})"></div>
 		            <p class="caption">{{ main_image.caption }}</p>
 	            {% endif %}
 	        {% endwith %}

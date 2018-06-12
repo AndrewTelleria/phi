@@ -15,7 +15,7 @@
   <div class="leftcolumn">
     <div class="container">
       {% for post in resources %}
-        <div class="card blog-card">
+        <div class="blog-card">
           <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
           {% with post.main_image as main_image %}
             {% if main_image %}{% image main_image width-250 %}{% endif %}
@@ -39,9 +39,10 @@
   </div>
     
   <div class="rightcolumn">
+    <div class="card">
     <h2>The Pup House Inn</h2>
     <p>{{ page.intro|richtext }}</p>
-    <h3>Tags</h3>
+    <!-- <h3>Tags</h3>
     {% with tags=page.get_children.all %}    
       <ul>
         {% for tag in tags %}
@@ -51,7 +52,7 @@
           </li>
         {% endfor %}      
       </ul>
-    {% endwith %}
+    {% endwith %} -->
 
     <h3>Popular Post</h3>
     {% for post in resources %}
@@ -59,6 +60,7 @@
         <h4><a href="{% pageurl post %}">{{ post.title }}</a></h4>
       </div>
       {% endfor %}
+    </div>
   </div>
 </div>
 

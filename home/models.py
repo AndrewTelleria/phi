@@ -1,5 +1,6 @@
 from django import forms
 from django.db import models
+from django.core.validators import RegexValidator
 
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
@@ -25,6 +26,7 @@ from .blocks import BaseStreamBlock
 from services.models import ServicePage
 from blog.models import BlogPage, BlogPageGalleryImage
 from photo_gallery.models import PhotoGalleryPage, PhotoGalleryImage
+
 
 
 @register_snippet
@@ -149,6 +151,9 @@ class HomePage(Page):
     		verbose_name='Hero CTA link',
     		help_text='Choose a page to link to for the Call to Action',
     	)
+    phone_regex = RegexValidator(regex=r'(\(\d\d\d\)) (\d\d\d-\d\d\d\d)', message="Phone must be entered in the format (555) 567-8555")
+    phone_number = models.CharField(validators=[phone_regex], max_length=15, blank=True)
+    email = models.EmailField(max_length=100)
 
     # Body section of the HomePage
     body = StreamField(
@@ -233,6 +238,8 @@ class HomePage(Page):
     	MultiFieldPanel([
     		ImageChooserPanel('image'),
     		FieldPanel('hero_text', classname="full"),
+    		FieldPanel('phone_number'),
+    		FieldPanel('email'),
     		MultiFieldPanel([
     			FieldPanel('hero_cta'),
     			PageChooserPanel('hero_cta_link'),
@@ -259,6 +266,9 @@ class HomePage(Page):
 			]),
 		], heading="Featured homepage section", classname="collapsible")
     ]
+
+    def phone_number_fixer(self):
+    	HomePage.objects.get("phone_number")
 
     def get_context(self, request):
     	context = super(HomePage, self).get_context(request)

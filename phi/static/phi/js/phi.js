@@ -9,10 +9,10 @@ if (pageUrl != '/') {
 // Sticky navbar
 window.onscroll = function() {stickyNavbar()};
 var navbar = document.getElementById("myNavbar");
-var sticky = navbar.offsetTop + 650;
+var sticky = navbar.offsetTop + 613;
 
 function stickyNavbar() {
-	if (window.pageYOffset + 650 >= sticky && pageUrl === '/') {
+	if (window.pageYOffset + 613 >= sticky && pageUrl === '/') {
 		navbar.classList.add("sticky");
 	} else {
 		navbar.classList.remove("sticky");

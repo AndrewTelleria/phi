@@ -6,13 +6,12 @@
 {% image page.image width-1920 as image %}
 
 
-
 <div class="container-fluid hero" style="background-image: url('{{ image.url }}')">
 </div>
 <div class="homepage-content">
 	<div class="container-hero">
 		<div class="row hero-row">			
-			<p>{{ page.hero_text }}</p>
+			<h1>{{ page.hero_text }}</h1>			
 			{% if page.hero_cta_link %}
 				<a href="{% pageurl page.hero_cta_link %}" class="hero-cta-link">
 					<p>{{ page.hero_cta }}</p>
@@ -43,16 +42,12 @@
 					{% for childpage in sp_features_list %}
 						<li>
 							<div class="row">
-								<div class="childpage">
-									<a href="{{ childpage.url }}">
-										<figure>
-											{% image childpage.image fill-180x140-c100 %}
-										</figure>
-									</a>
-									<div class="childpage-title">
-										<h3><a href="{{ childpage.url }}">{{ childpage.title }}</a></h3>
-									</div>
-								</div>
+								<a href="{{ childpage.url }}" class="childpage">
+									<figure>
+										{% image childpage.image fill-180x140-c100 %}
+									</figure>
+									<h2 class="childpage-title">{{ childpage.title }}</h2>
+								</a>								
 							</div>
 						</li>
 					{% endfor %}
@@ -76,8 +71,21 @@
 	<div class="row">
 		<div class="feature-2">
 			{% if page.featured_section_2 %}
-			<h2>{{ page.featured_section_2_title }}</h2>
-				<div class="feature-children row feature-2-row">
+			<h2>{{ page.featured_section_2_title }}</h2>	
+			<div class="feature-children row feature-2-row">			
+				{% for childpage in bp_features_list %}
+					<a href="{{ childpage.url }}">
+						<li class="feature-item-2">
+							{% image childpage.main_image fill-430x210-c10 %}
+							<div class="feature-2-text">
+								<h3>{{ childpage.title }}</h3>
+								<p>{{ childpage.intro|truncatewords:15 }}</p>
+							</div>
+						</li>
+					</a>
+				{% endfor %}
+			</div>			
+				<!-- <div class="feature-children row feature-2-row">
 					{% for childpage in bp_features_list %}
 						<li class="feature-2-item">
 							<a href="{{ childpage.url }}">
@@ -91,7 +99,7 @@
 							</div>
 						</li>
 					{% endfor %}
-				</div>
+				</div> -->
 			{% endif %}
 		</div>
 	</div>

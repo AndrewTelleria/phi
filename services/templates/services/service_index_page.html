@@ -2,29 +2,60 @@
 {% load wagtailimages_tags %}
 
 {% block content %}
-<div class="container">
-	<p>{{ page.body }}</p>
-	<div class="row">
-
-		<h2>Dog Services</h2>
-		{% for page in page.get_children.specific %}
-			{% if page.animal == 'dog' %}
-			<div class="card">
-				<h2><a href="{{ page.url }}">{{ page.title }}</a></h2>
+<div class="service-container">
+	<div class="leftcolumn">
+		<div class="card">
+			<p>{{ page.body }}</p>
+			<h2>Dog Services</h2>
+			<div class="row">			
+				{% for page in page.get_children.specific %}
+					{% if page.animal == 'dog' %}
+					<a href="{{ page.url }}">
+					<!-- <div class="childpage"> -->
+						{% image page.main_image fill-430x210-c10 %}
+						<h2>{{ page.title }}</h2>
+						<h3>{{ page.display_price }}</h3>
+						<p>{{ page.service }}</p>
+					<!-- </div> -->
+					</a>
+					{% endif %}
+				{% endfor %}
 			</div>
-			{% endif %}
-		{% endfor %}
+		
+			<h2>Cat Services</h2>
+			<div class="row">
+				{% for page in page.get_children.specific %}
+					{% if page.animal == 'cat' %}
+					<a href="{{ page.url }}">
+					<!-- <div class="childpage"> -->
+						{% image page.main_image fill-430x210-c10 %}
+						<h2>{{ page.title }}</h2>
+						<h3>{{ page.display_price }}</h3>
+						<p>{{ page.service }}</p>
+					<!-- </div> -->
+					</a>
+					{% endif %}
+				{% endfor %}
+			</div>
+		</div>
 	</div>
-	<div class="row">
-
-		<h2>Cat Services</h2>
-		{% for page in page.get_children.specific %}
-			{% if page.animal == 'cat' %}
-			<div class="card">
-				<h2><a href="{{ page.url }}">{{ page.title }}</a></h2>
-			</div>
-			{% endif %}
-		{% endfor %}
+	<div class="rightcolumn">
+		<div class="card">
+			<h2>Call Us</h2>
+			{{ page.phone_number }}
+			{% for childpage in sp_features_list %}
+				<li>
+					<div class="row">
+						<a href="{{ childpage.url }}" class="childpage">
+							<figure>
+								{% image childpage.image fill-180x140-c100 %}
+							</figure>
+							<h2 class="childpage-title">{{ childpage.title }}</h2>
+						</a>								
+					</div>
+				</li>
+			{% endfor %}
+		</div>
 	</div>
 </div>
 {% endblock %}
