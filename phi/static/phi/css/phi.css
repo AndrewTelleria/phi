@@ -27,7 +27,11 @@
 
 }
 
-
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  }
 
 html, body {
 	margin: 0;
@@ -53,9 +57,63 @@ h2, h3 {
 	cursor: pointer;
 }
 
+.inner-container {
+	max-width: 1200px;
+	margin: auto;
+	padding: 18px;
+}
+
 .row {
 	display: flex;
 	flex-wrap: wrap;
+}
+
+.inner-nav {
+	display: flex;
+	justify-content: space-between;	
+}
+
+.nav-right .nav-icons {
+	display: flex;
+	justify-content: flex-end;
+	margin: 20px 7px 15px 0;
+}
+
+.nav-right .nav-icon {
+	margin-left: 20px;
+}
+
+.nav-right .mail-icon {
+	width: 20px;
+	height: 20px;
+	background: url("../img/mail-black-envelope-symbol.png") no-repeat center;
+	background-size: contain;
+}
+
+.nav-right .phone-icon {
+	width: 20px;
+	height: 20px;
+	background: url("../img/telephone.png") no-repeat center;
+	background-size: contain;
+}
+
+.nav-right .facebook-icon {
+	width: 20px;
+	height: 20px;
+	background: url("../img/facebook-logo-button.png") no-repeat center;
+	background-size: contain;
+}
+
+.nav-left .nav-links {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.nav-logo {
+	width: 200px;
+	height: 80px;
+	background: url("../img/phi_grey.jpg") no-repeat center;
+	background-size: contain;
 }
 
 /* Navbar on page other than home */
@@ -78,24 +136,20 @@ h2, h3 {
 	background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    position: fixed;
-    height: 700px;
+    background-attachment: fixed;
     width: 100%;
     top: 0;
     z-index: -100;
-    opacity: 0.5;
     padding: 0;
 }
 
 .logo {
-	margin-top: -820px;
 	background-image: url("../img/the_pup_house_inn_logo_transparent.png");
 	background-size: contain;
 	background-position: center;
 	background-repeat: no-repeat;
 	height: 850px;
 	width: 100%;
-    position: fixed;
     z-index: -3;
 }
 
@@ -104,12 +158,9 @@ h2, h3 {
 }
 
 .container-hero {
-	margin-top: -330px;
     text-align: center;
-    position: fixed;
     z-index: -1;
     width: 100%;
-    margin: -290px 10px 10px 10px;
 }
 
 .container-hero .hero-row {
@@ -141,6 +192,20 @@ h2, h3 {
 .container-hero .hero-cta-link p {
 	font-size: 20px;
     width: 100%;
+}
+
+.section-1 {
+	background: url("../img/paws2.png") repeat center;
+	background-attachment: fixed;
+	padding: 18px;
+
+}
+
+.section-1-inner {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 18px;
+	background: linear-gradient(#cececc70 0%,#304b6d5e 100%);
 }
 
 @media screen and (max-width: 420px) {
@@ -206,28 +271,34 @@ h2, h3 {
 	top: 0;
 	z-index: -100;
 	opacity: 0.5;
+	background-attachment: fixed;
 }
 
 /* Navigation */
 
 .nav-bar {
-	margin-top: 613px;
-	background-color: #CECECC;
+	background-color: #304b6d;
 	overflow: hidden;
 	box-shadow: 0 1px 5px 0px #888888;
-	height: 66px;
 	z-index: 1;
+	height: 100px;
 }
 
-.nav-bar a:not(:last-child) {
-	float: left;	
-	color: black;
+.nav-right .nav-links a {
+	color: white;
 	text-align: center;
 	padding: 13px 14px 16px 16px;
 	text-decoration: none;
+	text-transform: uppercase;
 	height: 20px;
 	margin-top: 10px;
+
 }
+
+.nav-right .nav-links a:last-of-type {
+	padding: 13px 0 16px 16px;
+}
+
 
 .nav-bar a:hover:not(:last-child) {
 	/*padding-top: -1px;*/
@@ -323,13 +394,12 @@ h2, h3 {
 /* Promo section on homepage */
 
 .container .promo-row {
-    background: linear-gradient(#cececc 0%,#304b6d 100%);
+    
     height: 100%;
-    margin: -10px 10px 20px -11px;
+    margin: 0 10px 20px -11px;
     text-align: center;
     width: 35%;
     padding: 40px 60px;
-    border-radius: 0 0 10px;
 }
 
 .container .promo-row .promo img {
@@ -404,28 +474,33 @@ h2, h3 {
 
 /* Body block on homepage */ 
 
-.container .streamfield-column {
+.body-container .streamfield-column {
 	background: linear-gradient(rgba(170,170,170,1) 0%,rgba(238,238,238,1) 44%);
 	padding: 10px;
 }
 
-.container .streamfield-column .rich-text {
-	width: 50%;
+.body-container .streamfield-column .rich-text {
+	max-width: 1200px;
+	margin: auto;
+}
+
+.block-heading_block {
+	max-width: 1200px;
 	margin: auto;
 }
 
 @media screen and (max-width: 810px) {
-	.container .streamfield-column .rich-text {
+	.body-container .streamfield-column .rich-text {
 		width: 70%;
 	}	    
 }
 
-.container .streamfield-column .block-image_block figure img {
+.body-container .streamfield-column .block-image_block figure img {
 	width: 100%;
 	height: auto;
 }
 
-.container .streamfield-column .block-block_quote {
+.body-container .streamfield-column .block-block_quote {
 	width: 100%;
     background: black;
     color: white;
@@ -433,12 +508,12 @@ h2, h3 {
     margin: 0 0 -10px -10px;
 }
 
-.container .streamfield-column .block-block_quote blockquote {
+.body-container .streamfield-column .block-block_quote blockquote {
 	font-size: 30px;
     text-align: center;
 }
 
-.container .streamfield-column .block-block_quote footer {
+.body-container .streamfield-column .block-block_quote footer {
 	font-size: 25px;
     text-align: center;
 }
@@ -452,16 +527,15 @@ h2, h3 {
 
 .feature-2 .feature-children a {
 	text-decoration: none;
-	width: 25%;
-	margin: 20px;
-	background: #CECECC;
+	width: calc(100% / 3);
+	padding: 20px;
+	
 	border-radius: 0 0 5px 5px;
 	color: black;
 }
 
 .feature-2 .feature-children a:hover {
-	background-color: #304b6d;;
-	color: #CECECC;
+	background-color: #304b6d;
 }
 
 .feature-2 .feature-children a:active {
@@ -470,7 +544,8 @@ h2, h3 {
 }
 
 .feature-2 .feature-children .feature-item-2 {
-	list-style: none;	
+	list-style: none;
+	background: #CECECC;	
 }
 
 .feature-2 .feature-children .feature-2-text {
@@ -528,7 +603,7 @@ h2, h3 {
     margin: 10px;
     background: #cececc;
     border-radius: 5px;
-    width: 45%;
+    position: relative;
 }
 
 @media screen and (max-width: 955px) {
@@ -549,16 +624,30 @@ h2, h3 {
 }
 
 
-.feature-3 .feature-children .feature-3-item h3 {
+.section-3 .inner-container h2 {
     text-align: center;
     font-size: 30px;
     margin: 0;
     padding-top: 10px;
 }
 
-.feature-3 .feature-children .feature-3-item img {
+.feature-3 .feature-children .feature-3-item .feature-3-img {
 	width: 100%;
     height: auto;
+    background-size: cover;
+}
+
+.section-3 .feature-3 {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.section-3 .feature-3 a {
+	width: 50%;
+}
+
+.section-3 .feature-3 .feature-child .feature-3-img {
+	height: 300px;
 }
 /* Blog Index Page */
 

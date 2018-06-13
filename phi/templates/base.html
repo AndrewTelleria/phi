@@ -14,21 +14,19 @@
         {% load wagtailcore_tags wagtailimages_tags %}
         {% wagtailuserbar %}
 
-        {% if page.title == "Home" %}
-            <div class="home-phone-email">
-                <h2>Call <a href="tel:{{ page.phone_number }}">{{ page.phone_number }}</a></h2>
-                <h2>Email <a href="mailto:{{ page.email }}">{{ page.email }}</a></h2>
-            </div>
-            <div class="logo"></div>
-        {% endif %}
-                            
         {% block navbar %}
             {% include "includes/navbar.html" with parent=site_root calling_page=self %}
         {% endblock navbar %}
-        
-        <div class="content" id="pageContent" role="main">
-            {% block content %}{% endblock %}
-        </div>
+
+        {% if page.title == "Home" %}
+            <!-- <div class="home-phone-email">
+                <h2>Call <a href="tel:{{ page.phone_number }}">{{ page.phone_number }}</a></h2>
+                <h2>Email <a href="mailto:{{ page.email }}">{{ page.email }}</a></h2>
+            </div> -->
+            
+        {% endif %}                        
+                
+        {% block content %}{% endblock %}        
 
         <div class="footer">
             <h2>Footer</h2>
