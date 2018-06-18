@@ -125,6 +125,14 @@ class HomePage(Page):
     """
 
     # Hero section of HomePage
+    logo_image = models.ForeignKey(
+    		'wagtailimages.Image',
+    		null=True,
+    		blank=True,
+    		on_delete=models.SET_NULL,
+    		related_name='+',
+    		help_text='Homepage logo',
+    	)
     image = models.ForeignKey(
     		'wagtailimages.Image',
     		null=True,
@@ -237,6 +245,7 @@ class HomePage(Page):
     content_panels = Page.content_panels + [
     	MultiFieldPanel([
     		ImageChooserPanel('image'),
+    		ImageChooserPanel('logo_image'),
     		FieldPanel('hero_text', classname="full"),
     		FieldPanel('phone_number'),
     		FieldPanel('email'),

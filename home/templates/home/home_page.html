@@ -6,9 +6,11 @@
 {% image page.image width-1920 as image %}
 
 
+
 <div class="container-fluid hero" style="background-image: url('{{ image.url }}')">
 	<div class="container-hero inner-container">
-		<div class="logo"></div>
+		{% image page.logo_image width-1920 as l_image %}
+		<div class="logo" style="background-image: url('{{ l_image.url }}')"></div>
 		<div class="row hero-row">			
 			<h1>{{ page.hero_text }}</h1>			
 			{% if page.hero_cta_link %}
@@ -16,7 +18,7 @@
 					<p>{{ page.hero_cta }}</p>
 				</a>				
 			{% else %}
-				<p>Hero CTA: {{ page.hero_cta }}</p>
+				<p>{{ page.hero_cta }}</p>
 			{% endif %}
 		</div>
 	</div>
@@ -29,8 +31,8 @@
 					{% if page.promo_image or page.promo_title or page.promo_text %}
 					<figure>{% image page.promo_image fill-200x200-c100 %}</figure>
 					<div class="promo-text">
-						<h3>Promo Title: {{ page.promo_title }}</h3>
-						Promo Text: {{ page.promo_text|safe }}
+						<h3>{{ page.promo_title }}</h3>
+						{{ page.promo_text|safe }}
 					</div>
 					{% endif %}
 				</div>
@@ -42,14 +44,17 @@
 					<div class="feature-children">
 						{% for childpage in sp_features_list %}
 							<li>
-								<div class="row">
+								<!-- <div class="row"> -->
 									<a href="{{ childpage.url }}" class="childpage">
 										<figure>
 											{% image childpage.image fill-180x140-c100 %}
 										</figure>
-										<h2 class="childpage-title">{{ childpage.title }}</h2>
+										<div class="feature-1-text">
+											<h2 class="childpage-title">{{ childpage.title }}</h2>
+											<p>{{ childpage.display_price }}</p>
+										</div>
 									</a>								
-								</div>
+								<!-- </div> -->
 							</li>
 						{% endfor %}
 					</div>
@@ -67,61 +72,47 @@
 		</div>
 	{% endif %}
 
-
-<div class="container section-2">
-	<div class="inner-container">
-		<div class="feature-2">
-			{% if page.featured_section_2 %}
-			<h2>{{ page.featured_section_2_title }}</h2>	
-			<div class="feature-children row feature-2-row">			
-				{% for childpage in bp_features_list %}
-					<a href="{{ childpage.url }}">
-						<li class="feature-item-2">
-							{% image childpage.main_image fill-430x210-c10 %}
-							<div class="feature-2-text">
-								<h3>{{ childpage.title }}</h3>
-								<p>{{ childpage.intro|truncatewords:15 }}</p>
-							</div>
-						</li>
-					</a>
-				{% endfor %}
-			</div>			
-				<!-- <div class="feature-children row feature-2-row">
+<div class="bottom-container">
+	<div class="container section-2">
+		<div>
+			<div class="feature-2">
+				{% if page.featured_section_2 %}
+				<h2>{{ page.featured_section_2_title }}</h2>	
+				<div class="feature-children row feature-2-row">			
 					{% for childpage in bp_features_list %}
-						<li class="feature-2-item">
-							<a href="{{ childpage.url }}">
-								<figure>
-									{% image childpage.main_image fill-430x210-c10 %}
-								</figure>
-							</a>
-							<div class="feature-2-text">
-								<h3><a href="{{ childpage.url }}">{{ childpage.title }}</a></h3>
-								<p>{{ childpage.intro|truncatewords:15 }}</p>
-							</div>
-						</li>
+						<a href="{{ childpage.url }}">
+							<li class="feature-item-2">
+								{% image childpage.main_image fill-430x210-c10 %}
+								<div class="feature-2-text">
+									<h3>{{ childpage.title }}</h3>
+									<p>{{ childpage.intro|truncatewords:15 }}</p>
+								</div>
+							</li>
+						</a>
 					{% endfor %}
-				</div> -->
-			{% endif %}
+				</div>			
+				{% endif %}
+			</div>
 		</div>
 	</div>
-</div>
-<div class="section-3">
-	<div class="inner-container">
-		<h2>{{ page.featured_section_3_title }}</h2>
-		<div class="feature-3">
-			{% if page.featured_section_3 %}
-				{% for childpage in pgp_features_list %}
-					<a href="{{ childpage.url }}">	
-						<div class="feature-child">	
-							{% image childpage.main_image width-400 as pg_image %}
-							<div class="feature-3-img" style="background: url('{{ pg_image.url }}') no-repeat center; background-size: cover;">
-								<h3>{{ childpage.title }}</h3>
+	<div class="section-3">
+		<div class="inner-container">
+			<h2>{{ page.featured_section_3_title }}</h2>
+			<div class="feature-3">
+				{% if page.featured_section_3 %}
+					{% for childpage in pgp_features_list %}
+						<a href="{{ childpage.url }}">	
+							<div class="feature-child">	
+								{% image childpage.main_image width-400 as pg_image %}
+								<div class="feature-3-img" style="background: url('{{ pg_image.url }}') no-repeat center; background-size: cover;">
+									<h3>{{ childpage.title }}</h3>
+								</div>
 							</div>
-						</div>
-					</a>
-				{% endfor %}
-					
-			{% endif %}
+						</a>
+					{% endfor %}
+						
+				{% endif %}
+			</div>
 		</div>
 	</div>
 </div>

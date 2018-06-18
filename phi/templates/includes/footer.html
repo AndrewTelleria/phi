@@ -1,4 +1,37 @@
 {% load navigation_tags %}
-<div class="inner-container">
-	{% get_footer_text %}
+{% load wagtailcore_tags %}
+<div class="footer-container">
+	<div class="footer-map">
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21689.398965594402!2d-120.9493044880208!3d47.193589721810234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x549a1013dd608bf7%3A0x5813843d6a306aeb!2sCle+Elum%2C+WA+98922!5e0!3m2!1sen!2sus!4v1529002754781" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+	</div>
+
+	
+	<div class="footer-nav">
+		<div class="footer-links">
+			<a href="/">Home</a>
+            <a href="{% slugurl 'services' %}">Services</a>
+            <a href="#">Book</a>
+            <a href="{% slugurl 'blog' %}">Blog</a>
+            <a href="{% slugurl 'photo-gallery' %}">Photo Gallery</a>
+            <a href="{% slugurl 'about' %}">About</a>                
+            <a href="{% slugurl 'contact' %}">Contact</a>    
+	    </div>
+		<div class="footer-contact">
+			<h2>Business Info</h2>
+			<h3>The Pup House Inn</h3>
+			<p>1234 Cool St</p>
+			<p>Cle Elum, WA 12346</p>
+			<p><strong>Phone:</strong> 599-123-4567</p>
+			<p><strong>Email:</strong> cool@phi.com</p>
+			<p><strong>Hours:</strong> 9am - 5pm</p>
+		</div>
+		<div class="footer-badge"></div>
+		
+
+	</div>
+	<div class="footer-copyright">
+		<div class="footer-logo"></div>
+		{% get_footer_text %}
+	</div>
+	
 </div>
