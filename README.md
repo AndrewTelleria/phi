@@ -1,5 +1,7 @@
 # The Pup House Inn #
 
+This is a website for a animal boarding business to create, update, and show content on their website to promote their business.
+
 To run this application on your own machine:
 
 1. Make sure Python 3 and virtualenv are installed on your computer. If you don't have Python 3, you are on a macOS, and have brew installed you can run: 
@@ -21,14 +23,14 @@ To run this application on your own machine:
 
 	```source bin/activate```
 
-4. Once the virutalenv is activated we need to install Django 2.0.4
+4. Create a directory in the virutalenv called ```src``` - it can be named anything you want - change into the new directory and clone the repo. 
+
+5. We need to install Django 2.0.4 and Wagtail 2.0.
  
- 	```pip install Django==2.0.4```
+ 	```pip install -r requirements.txt```
 
-5. Create a directory in the virutalenv called ```src``` - it can be named anything you want - and clone the repo into the created directory.
-
-6. Change into the newly created directory and run:
+6. Then run:
 	
-	```./manage.py runserver```.
+	```./manage.py runserver```
 
 7. Navigate to ```localhost:8000``` in your web browser.
