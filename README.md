@@ -1,6 +1,6 @@
 # The Pup House Inn #
 
-This is a website for a animal boarding business to create, update, and show content on their website to promote their business.
+This is a website for an animal boarding business to create, update, and show content on their website to promote their business. The website uses Wagtail's CMS.
 
 To run this application on your own machine:
 
