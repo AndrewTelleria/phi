@@ -6,7 +6,9 @@ To run this application on your own machine:
 
 	```brew install pyton3``` 
 
-	If you have none of the above installed you can download python 3 from [here][https://www.python.org/downloads/]. I recommend installing [brew][https://brew.sh/] if you're on macOS to install python 3. Once Python 3 is installed to get virtualenv installed run:
+	If you have none of the above installed you can download python 3 from [here](https://www.python.org/downloads/). I recommend installing [brew](https://brew.sh/) if you're on macOS to install python 3. 
+
+	Once Python 3 is installed to get virtualenv installed run:
 
 	```pip3 install virtualenv``` 
 
@@ -25,6 +27,8 @@ To run this application on your own machine:
 
 5. Create a directory in the virutalenv called ```src``` - it can be named anything you want - and clone the repo into the created directory.
 
-6. Change into the newly created directory and run ```./manage.py runserver```.
+6. Change into the newly created directory and run 
+	
+	```./manage.py runserver```.
 
 7. Navigate to ```localhost:8000``` in your web browser.
