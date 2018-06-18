@@ -27,7 +27,7 @@ To run this application on your own machine:
 
 5. Create a directory in the virutalenv called ```src``` - it can be named anything you want - and clone the repo into the created directory.
 
-6. Change into the newly created directory and run 
+6. Change into the newly created directory and run:
 	
 	```./manage.py runserver```.
 
