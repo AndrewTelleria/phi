@@ -8,20 +8,22 @@
 
 {% block content %}
 <div class="row photo-galleries">
-	<div class="leftcolumn">
+	<div class="inner-container">
 		<div class="card">
 			<div class="row">
 				<h1>{{ page.title }}</h1>
 				<div class="intro">{{ page.intro|richtext }}</div>
 				{% for post in photo_gallery_pages %}
-				<a href="{% pageurl post %}">		
-					{% with post=post.specific %}				
-						<h2>{{ post.title }}</h2>
-						{% with post.main_image as main_image %}
-				            {% if main_image %}{% image main_image fill-430x210-c10 %}{% endif %}
-				        {% endwith %}			    
-				    {% endwith %}
-				    </a>	
+				<a href="{% pageurl post %}">
+					<div class="gallery-block">
+						{% with post=post.specific %}				
+							<h2>{{ post.title }}</h2>
+							{% with post.main_image as main_image %}
+					            {% if main_image %}{% image main_image fill-430x210-c10 %}{% endif %}
+					        {% endwith %}			    
+					    {% endwith %}
+					</div>		
+				</a>	
 				{% endfor %}
 			</div>
 		</div>

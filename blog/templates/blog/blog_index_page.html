@@ -6,63 +6,70 @@
 
 {% block content %}
 
-<div class="blog-header">
-	<h1>{{ page.title }}</h1>
-</div>
-
-<div class="row">
-
-  <div class="leftcolumn">
-    <div class="container">
-      {% for post in resources %}
-        <div class="blog-card">
-          <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
-          {% with post.main_image as main_image %}
-            {% if main_image %}{% image main_image width-250 %}{% endif %}
-          {% endwith %}
-          <p>{{ post.intro }}</p>
-        </div>
-      {% endfor %}
-    </div>
-
-    <ul class="pagination">
-      {% if resources.has_previous %}
-        <li><a href="?page={{ resources.previous_page_number }}">Previous Page</a></li>
-      {% endif %}
-      {% for page_num in resources.paginator.page_range %}
-        <li {% if page_num == resources.number %}class="active"{% endif %}><a href="?page={{ page_num }}">{{ page_num }}</a></li>
-      {% endfor %}
-      {% if resources.has_next %}
-      <li><a href="?page={{ resources.next_page_number }}">Next Page</a></li>
-      {% endif %}
-    </ul>
+<div class="blog-index">
+  <div class="blog-header">
+    <h1>{{ page.title }}</h1>
   </div>
-    
-  <div class="rightcolumn">
-    <div class="card">
-    <h2>The Pup House Inn</h2>
-    <p>{{ page.intro|richtext }}</p>
-    <!-- <h3>Tags</h3>
-    {% with tags=page.get_children.all %}    
-      <ul>
-        {% for tag in tags %}
-          <li>
-            {% image tag.icon fill-32x32 style="vertical-align: middle;" %}
-            {{ tag.tags }}
-          </li>
-        {% endfor %}      
-      </ul>
-    {% endwith %} -->
+  <div class="row inner-container">
 
-    <h3>Popular Post</h3>
-    {% for post in resources %}
-      <div class="card">
-        <h4><a href="{% pageurl post %}">{{ post.title }}</a></h4>
+    <div class="leftcolumn">
+      <div class="container">
+        {% for post in resources %}
+          <a class="blogcard-link" href="{{ post.url }}">
+            <div class="blog-card">
+              {% image post.main_image width-175 as post_img %}
+              <div class="blogcard-img" style="background: url('{{ post_img.url }}') no-repeat center; background-size: cover;"></div>
+              <div class="blogcard-text">
+                <!-- <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2> -->
+                <h2>{{ post.title }}</h2>
+                <p>{{ post.intro }}</p>
+              </div>   
+            </div>
+          </a>
+        {% endfor %}
       </div>
-      {% endfor %}
+
+      <ul class="pagination">
+        {% if resources.has_previous %}
+          <li><a href="?page={{ resources.previous_page_number }}">Previous Page</a></li>
+        {% endif %}
+        {% for page_num in resources.paginator.page_range %}
+          <li {% if page_num == resources.number %}class="active"{% endif %}><a href="?page={{ page_num }}">{{ page_num }}</a></li>
+        {% endfor %}
+        {% if resources.has_next %}
+        <li><a href="?page={{ resources.next_page_number }}">Next Page</a></li>
+        {% endif %}
+      </ul>
+    </div>
+      
+    <div class="rightcolumn">
+      <div class="card">
+      <h2>The Pup House Inn</h2>
+      <p>{{ page.intro|richtext }}</p>
+      <!-- <h3>Tags</h3>
+      {% with tags=page.get_children.all %}    
+        <ul>
+          {% for tag in tags %}
+            <li>
+              {% image tag.icon fill-32x32 style="vertical-align: middle;" %}
+              {{ tag.tags }}
+            </li>
+          {% endfor %}      
+        </ul>
+      {% endwith %} -->
+
+      <h3>Popular Post</h3>
+      {% for post in resources %}
+        <div class="card">
+          <h4><a href="{% pageurl post %}">{{ post.title }}</a></h4>
+        </div>
+        {% endfor %}
+      </div>
     </div>
   </div>
+  
 </div>
+
 
 {% endblock %}
 

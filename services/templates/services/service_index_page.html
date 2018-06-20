@@ -9,7 +9,7 @@
 			<h2>Dog Services</h2>
 		</div>
 		<div class="row dog-services">			
-			{% for page in page.get_children.specific %}
+			{% for page in page.get_children.live.specific %}
 				{% if page.animal == 'dog' %}
 				<a href="{{ page.url }}">
 				<!-- <div class="childpage"> -->
@@ -27,7 +27,7 @@
 	
 		<h2>Cat Services</h2>
 		<div class="row cat-services">
-			{% for page in page.get_children.specific %}
+			{% for page in page.get_children.live.specific %}
 				{% if page.animal == 'cat' %}
 				<a href="{{ page.url }}">
 				<!-- <div class="childpage"> -->
