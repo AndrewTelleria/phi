@@ -1,24 +1,11 @@
-var pageUrl = window.location.pathname
-if (pageUrl != '/') {
-	var x = document.getElementById("myNavbar");
-	var y = document.getElementById("pageContent");
-	x.className += " nav-bar1"
-	y.className += " content1"
-}
-
-// Sticky navbar
-window.onscroll = function() {stickyNavbar()};
-var navbar = document.getElementById("myNavbar");
-var sticky = navbar.offsetTop + 613;
-
-function stickyNavbar() {
-	if (window.pageYOffset + 613 >= sticky && pageUrl === '/') {
-		navbar.classList.add("sticky");
-	} else {
-		navbar.classList.remove("sticky");
-	}
-}
-// End sticky navbar
+var flky = new Flickity( '.main-carousel', {
+	accessibility: true,
+	autoPlay: true,
+	fullscreen: true,
+	cellAlign: 'center',
+	draggable: '>1',
+	lazyLoad: true
+});
 
 // Menu icon for small screen devices
 
@@ -29,7 +16,11 @@ function menuIcon(x) {
 function responsiveMenu() {
 	var x = document.getElementById("responsive-menu");
 	var y = document.getElementById("myNavbar");
+	console.log(x);
 
-	x.classList.toggle("disappear");
-	y.style.height = "150px";
+    if (x.className === "responsive") {
+        x.className += " menu-on";
+    } else {
+        x.className = "topnav";
+    }
 }

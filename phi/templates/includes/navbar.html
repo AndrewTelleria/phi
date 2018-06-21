@@ -16,32 +16,29 @@
                 <a href="{% slugurl 'blog' %}">Blog</a>
                 <a href="{% slugurl 'photo-gallery' %}">Photo Gallery</a>
                 <a href="{% slugurl 'about' %}">About</a>                
-                <a href="{% slugurl 'contact' %}">Contact</a>        
-                <!-- <a href="javascript:void(0);" class="menu-icon">
-                    <div onclick="menuIcon(this)">
-                        <div class="bar1"></div>
-                        <div class="bar2"></div>
-                        <div class="bar3"></div>
-                    </div>
-                </a> -->
-            </div>
-            
-            
+                <a href="{% slugurl 'contact' %}">Contact</a>                     
+            </div>               
         </div>
         
-        <!-- <div id="responsive-menu" onclick="responsiveMenu(this)">          
-            
-            <div class="responsive">
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="{% slugurl 'blog' %}">Blog</a></li>
-                    <li><a href="{% slugurl 'photo-gallery' %}">Photo Gallery</a></li>
-                    <li><a href="{% slugurl 'about' %}">About</a></li>       
-                    <li><a href="{% slugurl 'contact' %}">Contact</a></li>
-                    <li><a href="{% slugurl 'services' %}">Services</a></li>
-                    <li><a href="#">Book</a></li>
-                </ul>
+        <a href="javascript:void(0);" class="menu-icon">
+            <div onclick="menuIcon(this)">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
             </div>
-        </div> -->
+        </a>
+
+        
+        <div class="responsive" id="responsive-menu" onclick="responsiveMenu()"> 
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="{% slugurl 'blog' %}">Blog</a></li>
+                <li><a href="{% slugurl 'photo-gallery' %}">Photo Gallery</a></li>
+                <li><a href="{% slugurl 'about' %}">About</a></li>       
+                <li><a href="{% slugurl 'contact' %}">Contact</a></li>
+                <li><a href="{% slugurl 'services' %}">Services</a></li>
+                <li><a href="#">Book</a></li>
+            </ul>
+        </div>
     </div>
 </div>

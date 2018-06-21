@@ -7,8 +7,7 @@
 {% block content %}
 <div class="blog-container">
 	<div class="row inner-container">
-		<div class="leftcolumn">
-			<div class="card">
+		<div class="card">
 				<h1>{{ page.title }}</h1>
 				<hr>
 				<div class="entry-info">
@@ -23,41 +22,42 @@
 	<!-- 			<div class="intro">{{ page.intro }}</div>	 -->		
 
 				<p>{% include_block page.body %}</p>
-					{% for item in page.gallery_images.all %}
-						{% image item.image width-400 as photo %}
-						<div class="blog-image" style="background-image: url({{ photo.url }})"></div>
-						<p class="caption">{{ item.caption }}</p>
-					{% endfor %}
+					{% if page.gallery_images %}
+						<div class="main-carousel">
+							{% for item in page.gallery_images.all %}
+							{% image item.image fill-1280x900 as photo%}
+								<div class="carousel-cell"><img class="blog-gallery-image" src="{{ photo.url }}"></div>
+		<!-- 						<p class="caption">{{ item.caption }}</p> -->
+							{% endfor %}					
+						</div>
+					{% endif %}
+				<div class="entry-close">
+					{% if page.tags.all.count %}
+						<div class="tags">
+							<h3>Tags</h3>
+							{% for tag in page.tags.all %}
+								<a href="{% slugurl 'tags' %}?tag={{ tag }}"><button type="button">{{ tag }}</button></a>
+							{% endfor %}
+						</div>
+					{% endif %}
+					{% with categories=page.categories.all %}
+						{% if categories %}
+							<h3>Posted in:</h3>
+							<ul>
+								{% for category in categories %}
+									<li>
+										{% image category.icon fill-32x32 style="vertical-align: middle" %}
+										{{ category.name }}
+									</li>
+								{% endfor %}
+							</ul>
+						{% endif %}
+					{% endwith %}
+				</div>
 				<p><a href="{{ page.get_parent.url }}">Return to blog</a></p>
 			</div>
-		</div>
-		<div class="rightcolumn">
-			<div class="card">
-				
-				<p>{{ page.intro }}</p>
-				{% if page.tags.all.count %}
-					<div class="tags">
-						<h3>Tags</h3>
-						{% for tag in page.tags.all %}
-							<a href="{% slugurl 'tags' %}?tag={{ tag }}"><button type="button">{{ tag }}</button></a>
-						{% endfor %}
-					</div>
-				{% endif %}
-				{% with categories=page.categories.all %}
-					{% if categories %}
-						<h3>Posted in:</h3>
-						<ul>
-							{% for category in categories %}
-								<li>
-									{% image category.icon fill-32x32 style="vertical-align: middle" %}
-									{{ category.name }}
-								</li>
-							{% endfor %}
-						</ul>
-					{% endif %}
-				{% endwith %}
-			</div>
-		</div>
+			
+
 	</div>
 </div>
 

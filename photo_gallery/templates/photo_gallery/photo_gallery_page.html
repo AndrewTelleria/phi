@@ -6,34 +6,31 @@
 
 
 {% block content %}
-	<div class="card photo-gallery">
-		<h1>{{ page.title }}</h1>
-		<p class="meta">{{ page.description }}</p>
-		<div class="slider">			
-			<div class="row">
-				<button class="slider-button left-arrow" onclick="plusDivs(-1)">Left</button>
-				<button class="slider-button right-arrow" onclick="plusDivs(+1)">Right</button>
+<div class="photo-gallery-page">
+	<div class="inner-container">
+		<div class="photo-gallery">
+			<h1>{{ page.title }}</h1>
+			<p class="meta">{{ page.description }}</p>
+			<div class="main-carousel">
+				{% for item in page.gallery_images.all %}
+					{% image item.image max-1280x900 as photo %}
+					<div class="carousel-cell"><img class="carousel-cell-image" data-flickity-lazyload="{{ photo.url }}"></div>
+				{% endfor %}
 			</div>
-			{% for item in page.gallery_images.all %}
-				{% image item.image max-1000x500 as tmp_photo %}
-				<img class="mySlides" src="{{ tmp_photo.url }}">
-			{% endfor %}
 		</div>
-
-		
-	
-
 		<div class="row photo">
 			{% for item in page.gallery_images.all %}
-				{% image item.image max-1000x1000 as tmp_photo %}
-					<div class="card">
-					<a href="{{ tmp_photo.url }}">{% image item.image fill-320x240 %}</a>
-					<p>Caption: {{ item.caption }}</p>
+				{% image item.image max-1000x1000 as photo %}
+					<div class="single-image">
+						<a href="{{ photo.url }}"><div class="gallery-photo" style="background:url('{{ photo.url }}') no-repeat center;"></div></a>
+						{% if item.caption %}
+							<p>{{ item.caption }}</p>
+						{% endif %}
 					</div>
 			{% endfor %}
 		</div>
 
 		<a href="{{ page.get_parent.url }}">Return to Photo Galleries</a>
 	</div>
-
+</div>
 {% endblock %}

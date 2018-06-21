@@ -2,11 +2,15 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
-<div class="row">
-	<div class="leftcolumn">
+<div class="row contact-page">
+	<div class="inner-container">
+		<div class="contact-map">
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21689.398965594402!2d-120.9493044880208!3d47.193589721810234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x549a1013dd608bf7%3A0x5813843d6a306aeb!2sCle+Elum%2C+WA+98922!5e0!3m2!1sen!2sus!4v1529002754781" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+		</div>
 		<div class="card">
-			<div class="row">
+			<div class="row left-contact">
 				<div class="contact-form">
+					<h2>{{ page.title }}</h2>
 					{% if page.intro %}
 						<p class="intro">{{ page.intro|richtext }}</p>
 					{% endif %}
@@ -15,8 +19,9 @@
 					{% endif %}
 				</div>
 			</div>
-			<div class="row">
+			<div class="row right-contact">
 				<div class="form-page">
+					<h2>Email Form</h2>
 					{% comment %}
 			        You could render your form using a Django rendering shortcut such as `{{ form.as_p }}` but that will tend towards unsemantic code, and make it difficult to style. You can read more on Django form at:
 			        https://docs.djangoproject.com/en/1.10/topics/forms/#form-rendering-options
