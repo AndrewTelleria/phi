@@ -13,14 +13,9 @@ function menuIcon(x) {
 	x.classList.toggle("change");
 }
 
-function responsiveMenu() {
-	var x = document.getElementById("responsive-menu");
-	var y = document.getElementById("myNavbar");
-	console.log(x);
-
-    if (x.className === "responsive") {
-        x.className += " menu-on";
-    } else {
-        x.className = "topnav";
-    }
+function responsiveMenu(x) {
+	var menuClass = document.getElementById("responsive-menu");
+	console.log(menuClass)
+	menuClass.classList.toggle("menu-on");
 }
+

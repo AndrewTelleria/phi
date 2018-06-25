@@ -2,12 +2,12 @@
 
 <div class="nav-bar" id="">
     <div class="inner-nav inner-container">
-        <div class="nav-logo"></div>
+        <a href="/"><div class="nav-logo"></div></a>
         <div class="nav-right">
             <div class="nav-icons">
-                <div class="mail-icon nav-icon"></div>
-                <div class="phone-icon nav-icon"></div>
-                <div class="facebook-icon nav-icon"></div>
+                <a href="#"><div class="mail-icon nav-icon"></div></a>
+                <a href="#"><div class="phone-icon nav-icon"></div></a>
+                <a href="#"><div class="facebook-icon nav-icon"></div></a>
             </div>
             <div class="nav-links">
                 <a href="/">Home</a>
@@ -20,7 +20,7 @@
             </div>               
         </div>
         
-        <a href="javascript:void(0);" class="menu-icon">
+        <a href="javascript:void(0);" class="menu-icon" onclick="responsiveMenu(this)">
             <div onclick="menuIcon(this)">
                 <div class="bar1"></div>
                 <div class="bar2"></div>
@@ -29,15 +29,20 @@
         </a>
 
         
-        <div class="responsive" id="responsive-menu" onclick="responsiveMenu()"> 
+        <div class="responsive" id="responsive-menu"> 
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="{% slugurl 'blog' %}">Blog</a></li>
-                <li><a href="{% slugurl 'photo-gallery' %}">Photo Gallery</a></li>
-                <li><a href="{% slugurl 'about' %}">About</a></li>       
-                <li><a href="{% slugurl 'contact' %}">Contact</a></li>
-                <li><a href="{% slugurl 'services' %}">Services</a></li>
-                <li><a href="#">Book</a></li>
+                <a href="/"><li>Home</li></a>
+                <a href="{% slugurl 'blog' %}"><li>Blog</li></a>
+                <a href="{% slugurl 'photo-gallery' %}"><li>Photo Gallery</li></a>
+                <a href="{% slugurl 'about' %}"><li>About</li></a>    
+                <a href="{% slugurl 'contact' %}"><li>Contact</li></a>
+                <a href="{% slugurl 'services' %}"><li>Services</li></a>
+                <a href="#"><li>Book</li></a>
+                <li>
+                    <a href="#"><div class="mail-icon nav-icon"></div></a>
+                    <a href="#"><div class="phone-icon nav-icon"></div></a>
+                    <a href="#"><div class="facebook-icon nav-icon"></div></a>
+                </li>
             </ul>
         </div>
     </div>

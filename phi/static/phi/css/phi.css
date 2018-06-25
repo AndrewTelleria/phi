@@ -65,21 +65,21 @@ h2, h3 {
 	margin-left: 20px;
 }
 
-.nav-right .mail-icon {
+.mail-icon {
 	width: 20px;
 	height: 20px;
 	background: url("../img/mail-black-envelope-symbol.png") no-repeat center;
 	background-size: contain;
 }
 
-.nav-right .phone-icon {
+.phone-icon {
 	width: 20px;
 	height: 20px;
 	background: url("../img/telephone.png") no-repeat center;
 	background-size: contain;
 }
 
-.nav-right .facebook-icon {
+.facebook-icon {
 	width: 20px;
 	height: 20px;
 	background: url("../img/facebook-logo-button.png") no-repeat center;
@@ -269,18 +269,20 @@ h2, h3 {
 
 }
 
-.nav-right .nav-links a:last-of-type {
-	padding: 13px 0 16px 16px;
-}
 
-
-.nav-bar a:hover {
+.nav-bar .nav-right a:hover {
 	/*padding-top: -1px;*/
 	border-top: 1px solid #58A4B0;
 	color: #58A4B0;
 }
 
-.nav-bar a:active:not(:last-child) {
+.nav-bar .nav-right .nav-icons a:hover {
+	border-top: none;
+}
+
+
+
+.nav-bar .nav-right a:active:not(:last-child) {
 	border-top: 1px solid #304B6D;
 	color: #304B6D;
 }
@@ -324,24 +326,50 @@ h2, h3 {
 	padding-top: 670px;
 }
 
-.responsive {
-	text-align: left;
-	width: 400px;
-	height: 100%;
-	background: linear-gradient(#58A4B0 0%,#2B303A 100%);
-	position: absolute;
-	top: 0;
-	right: 0;
+.responsive.menu-on {
 	display: none;
 }
 
+.responsive {
+	text-align: left;
+	width: 100%;
+	background-color: #2B303A;
+	/*background: linear-gradient(#58A4B0 0%,#2B303A 100%);*/
+	position: absolute;
+	top: 96px;
+	right: 0;
+	display: none;
+	z-index: 99;
+}
+
 .responsive ul {
-	margin-top: 100px;
+	margin: 0;
+	padding: 0;
+}
+
+.responsive ul > li {
+	display: flex;
+	justify-content: space-around;
+}
+
+.responsive ul li a .nav-icon {
+	height: 30px;
+	width: 30px;
 }
 
 .responsive ul li {
 	list-style: none;
 	position: relative;
+	border-top: 1px solid white;
+	text-align: center;
+	padding: 10px;
+	font-size: 16px;
+	text-decoration: none;
+	color: white;
+}
+
+.responsive ul a {
+	text-decoration: none;
 }
 
 .disappear .responsive {
@@ -380,12 +408,13 @@ h2, h3 {
 	width: 50%;
     height: auto;
     border-radius: 600px;
+    min-width: 120px;
+    max-width: 300px;
 }
 
 /* Feature 1 on homepage */
 
 .section-1 .feature-1 > h2 {
-    color: #D0CECC;
     font-weight: 400;
     font-size: 50px;
     text-align: center;
@@ -671,7 +700,9 @@ h2, h3 {
 .blog-header {
 	font-size: 40px;
 	text-align: center;
-	padding-top: 30px;
+	padding: 30px 18px 0 18px;
+	font-size: 40px;
+	line-height: 80px;
 }
 
 /* End blog index page */
@@ -688,6 +719,7 @@ h2, h3 {
 	display: flex;
 	margin: auto;
 	justify-content: center;
+	padding-left: 0;
 }
 
 .leftcolumn .pagination a {
@@ -757,6 +789,7 @@ h2, h3 {
 	padding: 20px;
 	margin: 20px;
 	display: flex;
+	flex-wrap: wrap;
 }
 
 .blog-index .leftcolumn .blog-card .blogcard-text p {
@@ -950,16 +983,24 @@ h2, h3 {
 }
 
 .service-container .services-container h2 {
-	font-size: 40px;
+	font-size: 60px;
 	margin: 100px auto 50px auto;
+	text-align: center;
 }
+
+.service-container .services-container .services-content h2 {
+	margin-top: 10px;
+	font-size: 40px;
+	text-align: left;
+}
+
 
 .service-container .services-container .block-heading_block {
 	text-align: center;
 }
 
-.service-container .services-container .services-text {
-	text-align: center;
+.service-container .services-container .services-text p {
+	text-align: left;
 }
 
 .service-container .services-container a {
@@ -969,6 +1010,10 @@ h2, h3 {
     flex-direction: column;
 	color: #304b6d;
     border: 1px solid white;
+}
+
+.service-container .services-container a {
+
 }
 
 .service-container .services-container a:hover {	
@@ -996,24 +1041,28 @@ h2, h3 {
 
 /* Photo gallery index */
 
+.photo-galleries {
+	background: url('../img/frost.jpg');
+}
+
+.photo-galleries .inner-container .photo-gallery-container {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 -10px;
+	width: 100%;
+}
+
 .photo-galleries .inner-container a {
 	width: calc( 100% / 3);
-    padding: 10px;
+    padding: 20px 10px 10px 10px;
     text-decoration: none;
-    max-height: 234px;
+    height: 254px;
     overflow: hidden;
-}
-
-.photo-galleries .inner-container a:first-of-type {
-	padding-left: 0;
-}
-
-.photo-galleries .inner-container a:last-of-type {
-	padding-right: 0;
 }
 
 .photo-galleries .inner-container h1 {
 	color: #2B303A;
+	line-height: 34px;
 }
 
 .photo-galleries .inner-container p {
@@ -1026,17 +1075,24 @@ h2, h3 {
     background: #2B303A;
     border-radius: 5px 5px 0 0;
     overflow: hidden;
+    height: 100%;
 }
 
-.photo-galleries .inner-container a .gallery-block img {
+.gallery-block .pg-image-container {
 	width: 100%;
-    height: auto;
-    transition: all 0.5s ease;
+	height: 170px;
 }
 
-.photo-galleries .inner-container a:hover .gallery-block img {
-	width: 160%;
-	margin-left: -45%;
+.gallery-block .pg-image-container .index-pg-image {
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	transition: all 0.5s ease;
+}
+
+.photo-galleries .inner-container a:hover .gallery-block .pg-image-container .index-pg-image {
+	width: 150%;
+	margin-left: -20%;
 }
 
 .photo-galleries .inner-container a .gallery-block h2 {
@@ -1073,7 +1129,7 @@ h2, h3 {
 
 .photo-gallery-page .carousel-cell img {
   display: block;
-  max-height: 100%;
+  max-width: 100%;
 }
 
 .photo-gallery-page .carousel-cell {
@@ -1114,7 +1170,7 @@ h2, h3 {
 }
 
 .photo-gallery-page .photo-gallery {
-	padding: 20px;
+	padding: 20px 0;
 	margin-bottom: 10px;
 }
 
@@ -1279,6 +1335,7 @@ h2, h3 {
 .contact-page .inner-container .card {
 	display: flex;
 	justify-content: space-between;
+	flex-wrap: wrap;
 }
 
 .contact-page .contact-form h2 {
@@ -1414,7 +1471,7 @@ h2, h3 {
 .footer-logo {
 	width: 239px;
     height: 185px;
-    background: url(/media/images/Puphouse-Logo.width-1920.png) no-repeat center;
+    background: url("../img/PuphouseLogo.png") no-repeat center;
     background-size: contain;
     margin: auto;
     margin-top: 20px;
