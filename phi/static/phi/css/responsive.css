@@ -99,6 +99,8 @@
 
 	.contact-page .left-contact {
 		width: 100%;
+		border-bottom: 1px solid #2b303a;
+
 	}
 
 	.contact-page .right-contact {

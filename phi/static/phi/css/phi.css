@@ -280,9 +280,7 @@ h2, h3 {
 	border-top: none;
 }
 
-
-
-.nav-bar .nav-right a:active:not(:last-child) {
+.nav-bar .nav-right .nav-links a:active:not(:last-child) {
 	border-top: 1px solid #304B6D;
 	color: #304B6D;
 }
@@ -725,22 +723,35 @@ h2, h3 {
 .leftcolumn .pagination a {
 	text-decoration: none;
 	margin: 10px;
-	padding: 3px;
+	padding: 5px;
 	font-size: 20px;
 	color: white;
 }
 
 .leftcolumn .pagination a:hover {
 	background-color: #304B6D;
-	color: #C7C7C5;
-	border-radius: 1px;
+	border-radius: 4px;
 }
 
 .leftcolumn .pagination a:active {
 	background-color: black;
 	color: white;
-	border-radius: 1px;
+	border-radius: 4px;
 }
+
+.blog-index .leftcolumn .pagination li.active {
+	pointer-events: none;
+	cursor: default;
+}
+
+.blog-index .leftcolumn .pagination li.active a {
+	color: #2b303a;
+    background-color: white;
+    border-radius: 4px;
+    opacity: 0.6;
+    padding: 5px;
+}
+
 
 .container {
 	display: flex;
@@ -871,6 +882,10 @@ h2, h3 {
 	margin-right: 18px;
 }
 
+.blog-container .card .flickity-enabled {
+	margin: 0 -20px;
+}
+
 .blog-container .tags h3 {
 	color: #2B303A;
 }
@@ -921,7 +936,7 @@ h2, h3 {
 
 .main-carousel .carousel-cell img {
   display: block;
-  max-height: 100%;
+  max-width: 100%;
 }
 
 
@@ -986,14 +1001,19 @@ h2, h3 {
 	font-size: 60px;
 	margin: 100px auto 50px auto;
 	text-align: center;
+	line-height: 65px;
 }
 
 .service-container .services-container .services-content h2 {
 	margin-top: 10px;
 	font-size: 40px;
 	text-align: left;
+	margin-bottom: 5px;
 }
 
+.service-container .services-container .services-content h3 {
+	font-size: 25px;
+}
 
 .service-container .services-container .block-heading_block {
 	text-align: center;
@@ -1048,7 +1068,6 @@ h2, h3 {
 .photo-galleries .inner-container .photo-gallery-container {
 	display: flex;
 	flex-wrap: wrap;
-	margin: 0 -10px;
 	width: 100%;
 }
 

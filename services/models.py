@@ -18,24 +18,14 @@ class ServiceIndexPage(Page):
 	body = StreamField(
 		BaseStreamBlock(), verbose_name="Page body", blank=True
 	)
-	phone_regex = RegexValidator(regex=r'(\(\d\d\d\)) (\d\d\d-\d\d\d\d)', message="Phone must be entered in the format (555) 567-8555")
-	phone_number = models.CharField(validators=[phone_regex], max_length=15, blank=True, help_text="Enter in the format (555) 123-4567")
-
 
 	content_panels =  Page.content_panels + [
-		FieldPanel('phone_number'),
 		StreamFieldPanel('body'),
 	]
 
 	# def get_context(self, request):
-	# 	context = super(ServicePage, self).get_context(request)
-	# 	sp_list = [1, 2, 3]
-	# 	sp_objs = ServicePage.objects.all()
-	# 	for sp in sp_objs:
-	# 		for value in sp_list:
-	# 			if value == sp.feature and sp not in sp_list:
-	# 				sp_list.insert(value-1, sp)
-	# 				sp_list.remove(value)
+	# 	context = super(ServiceIndexPage, self).get_context(request)
+	# 	home_page = Page.objects.parent_of(self).live()
 
 
 
