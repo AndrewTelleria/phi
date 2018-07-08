@@ -3,13 +3,11 @@
 
 {% block content %}
 
-{% image page.image width-1920 as image %}
-
-
+{% image page.image width-1200 as image %}
 
 <div class="container-fluid hero" style="background-image: url('{{ image.url }}')">
 	<div class="container-hero inner-container">
-		{% image page.logo_image width-1920 as l_image %}
+		{% image page.logo_image width-800 as l_image %}
 		<div class="logo" style="background-image: url('{{ l_image.url }}')"></div>
 		<div class="row hero-row">			
 			<h1>{{ page.hero_text }}</h1>			
