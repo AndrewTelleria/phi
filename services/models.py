@@ -66,8 +66,8 @@ class ServicePage(Page):
 		help_text='Landscape mode only; horizontal width between 1000px and 3000px.'
 	)
 	service = models.CharField(max_length=255)
-	display_price = models.CharField(max_length=255, help_text='Ex. $50/day')
-	price = models.DecimalField(max_digits=6, decimal_places=2, help_text='50.00')
+	display_price = models.CharField(max_length=255, help_text='Ex. $50/day', default='$0.00')
+	price = models.DecimalField(max_digits=6, decimal_places=2, help_text='50.00', default=0.00)
 	body = StreamField(
 		BaseStreamBlock(), verbose_name="Page body", blank=True
 	)
