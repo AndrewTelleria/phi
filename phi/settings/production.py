@@ -1,8 +1,8 @@
 from .base import *
-import os
+from .secrets import *
 
 
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = SECRET_KEY
 
 DEBUG = False
 
