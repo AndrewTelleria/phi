@@ -17,7 +17,7 @@
         {% for post in resources %}
           <a class="blogcard-link" href="{{ post.url }}">
             <div class="blog-card">
-              {% image post.main_image width-175 as post_img %}
+              {% image post.image width-175 as post_img %}
               <div class="blogcard-img" style="background: url('{{ post_img.url }}') no-repeat center; background-size: cover;"></div>
               <div class="blogcard-text">
                 <!-- <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2> -->

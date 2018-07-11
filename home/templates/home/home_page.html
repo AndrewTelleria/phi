@@ -80,7 +80,7 @@
 					{% for childpage in bp_features_list %}
 						<a href="{{ childpage.url }}">
 							<li class="feature-item-2">
-								{% image childpage.main_image fill-430x210-c10 %}
+								{% image childpage.image fill-430x210-c10 %}
 								<div class="feature-2-text">
 									<h3>{{ childpage.title }}</h3>
 									<p>{{ childpage.intro|truncatewords:15 }}</p>
