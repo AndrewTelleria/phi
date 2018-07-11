@@ -12,22 +12,20 @@
 				<hr>
 				<div class="entry-info">
 					<p class="meta"><b>{{ page.date }}</b></p>
-					<p>Author: {{ page.author }}</p>		            
+					{% if page.author %}
+						<p>Written by: {{ page.author }}</p>
+						<p>{{ page.author.about }}</p>
+					{% endif %}
 		        </div>
 		        {% image page.image fill-1280x900-c10 as photo %}
 		        <div class="blog-header-image" style="background: url({{ photo.url }}) no-repeat center; background-size: cover;"></div>
 
-				
-
-	<!-- 			<div class="intro">{{ page.intro }}</div>	 -->		
-
 				<p>{% include_block page.body %}</p>
-					{% if page.gallery_images %}
+					{% if page.gallery_images.all|length > 0 %}
 						<div class="main-carousel">
 							{% for item in page.gallery_images.all %}
-							{% image item.image fill-1280x900 as photo%}
+							{% image item.image width-1280 as photo%}
 								<div class="carousel-cell"><img class="blog-gallery-image" src="{{ photo.url }}"></div>
-		<!-- 						<p class="caption">{{ item.caption }}</p> -->
 							{% endfor %}					
 						</div>
 					{% endif %}

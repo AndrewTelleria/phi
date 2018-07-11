@@ -45,6 +45,7 @@ class People(ClusterableModel):
 	first_name = models.CharField("First name", max_length=254)
 	last_name = models.CharField("Last name", max_length=254)
 	job_title = models.CharField("Job title", max_length=254)
+	about = models.TextField(max_length=300)
 
 	image = models.ForeignKey(
 			'wagtailimages.Image',
@@ -58,6 +59,7 @@ class People(ClusterableModel):
 		FieldPanel('first_name', classname="first-name"),
 		FieldPanel('last_name', classname="last-name"),
 		FieldPanel('job_title'),
+		FieldPanel('about', classname="full"),
 		ImageChooserPanel('image'),
 	]
 
