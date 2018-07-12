@@ -145,7 +145,7 @@ class HomePage(Page):
     	)
     hero_text = models.CharField(
     		max_length=255,
-    		help_text='Write an introduction for the bakery',
+    		help_text='Write an introduction for the business',
     	)
     hero_cta = models.CharField(
     		verbose_name='Hero CTA',
