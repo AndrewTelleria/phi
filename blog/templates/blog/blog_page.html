@@ -11,11 +11,7 @@
 				<h1>{{ page.title }}</h1>
 				<hr>
 				<div class="entry-info">
-					<p class="meta"><b>{{ page.date }}</b></p>
-					{% if page.author %}
-						<p>Written by: {{ page.author }}</p>
-						<p>{{ page.author.about }}</p>
-					{% endif %}
+					<p class="meta"><b>{{ page.date }}</b></p>					
 		        </div>
 		        {% image page.image fill-1280x900-c10 as photo %}
 		        <div class="blog-header-image" style="background: url({{ photo.url }}) no-repeat center; background-size: cover;"></div>
@@ -29,7 +25,14 @@
 							{% endfor %}					
 						</div>
 					{% endif %}
+				<hr>
 				<div class="entry-close">
+					{% if page.author %}
+						{% image page.author.image fill-100x100 as pro_pic %}
+						<img class="author-profile-pic" src="{{ pro_pic.url }}">
+						<p><strong>Written by:</strong> {{ page.author }}</p>
+						<p class="author-about"><strong>About:</strong> {{ page.author.about }}</p>						
+					{% endif %}
 					{% if page.tags.all.count %}
 						<div class="tags">
 							<h3>Tags</h3>

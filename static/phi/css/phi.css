@@ -965,6 +965,11 @@ h2, h3 {
 	width: 75%;
 }
 
+.author-about {
+    font-size: 13px;
+    font-weight: 300;
+}
+
 /* End blog page */
 
 /* Service index page */
